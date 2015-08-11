@@ -13,7 +13,7 @@
 <?rfc compact="yes"?>
 <?rfc subcompact="no"?>
 
-<rfc ipr="trust200902" docName="draft-ietf-sacm-architecture-04" category="info">
+<rfc ipr="trust200902" docName="draft-ietf-sacm-architecture-latest" category="info">
 
   <front>
     <title abbrev="Abbreviated Title">Secure Automation and Continuous Monitoring (SACM) Architecture</title>
