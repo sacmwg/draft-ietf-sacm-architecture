@@ -2,7 +2,9 @@
 
 This is the working area for the IETF SACM Architecture draft.
 
+* [Editor's copy](https://sacmwg.github.io/draft-ietf-sacm-architecture/)
 * [Working Group Draft] (https://tools.ietf.org/html/draft-ietf-sacm-architecture)
+* [Compare Working Group and Editor's Drafts] (https://tools.ietf.org/rfcdiff?url1=https://www.ietf.org/id/draft-ietf-sacm-architecture&url2=https://sacmwg.github.io/draft-ietf-sacm-architecture/draft-ietf-sacm-architecture.txt)
 
 ## Document Status
 
