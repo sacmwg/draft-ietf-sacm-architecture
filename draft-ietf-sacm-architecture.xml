@@ -306,7 +306,7 @@ on the
 numbers, types, sizes, and rate of requests.</t>
 
 </section>
-<section anchor="provider-consumer-types" title="Types of Providers and Controllers">
+<section anchor="provider-consumer-types" title="Types of Providers and Consumers">
 <t>SACM Providers and Consumers can perform a variety of SACM-related tasks.  For example, a Collector can perform Collection tasks; an Evaluator can perform Evaluation tasks.  A single Provider or Consumer may be able to perform only one task, or multiple tasks. SACM defines the following types of Providers/Consumers:</t>
 
 <section anchor="collector" title="Collector">
