@@ -73,7 +73,7 @@ Table of Contents
      3.1.  Component Roles . . . . . . . . . . . . . . . . . . . . .   5
        3.1.1.  Provider  . . . . . . . . . . . . . . . . . . . . . .   6
        3.1.2.  Consumer  . . . . . . . . . . . . . . . . . . . . . .   6
-       3.1.3.  Types of Providers and Controllers  . . . . . . . . .   7
+       3.1.3.  Types of Providers and Consumers  . . . . . . . . . .   7
          3.1.3.1.  Collector . . . . . . . . . . . . . . . . . . . .   7
          3.1.3.2.  Evaluator . . . . . . . . . . . . . . . . . . . .   8
          3.1.3.3.  Report Generator  . . . . . . . . . . . . . . . .   9
@@ -372,7 +372,7 @@ Internet-Draft              Abbreviated Title                  July 2015
    to limits or constraints on the numbers, types, sizes, and rate of
    requests.
 
-3.1.3.  Types of Providers and Controllers
+3.1.3.  Types of Providers and Consumers
 
    SACM Providers and Consumers can perform a variety of SACM-related
    tasks.  For example, a Collector can perform Collection tasks; an

@@ -459,7 +459,7 @@ ul.toc a:first-child {
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Component Roles"/>
 <link href="#rfc.section.3.1.1" rel="Chapter" title="3.1.1 Provider"/>
 <link href="#rfc.section.3.1.2" rel="Chapter" title="3.1.2 Consumer"/>
-<link href="#rfc.section.3.1.3" rel="Chapter" title="3.1.3 Types of Providers and Controllers"/>
+<link href="#rfc.section.3.1.3" rel="Chapter" title="3.1.3 Types of Providers and Consumers"/>
 <link href="#rfc.section.3.1.3.1" rel="Chapter" title="3.1.3.1 Collector"/>
 <link href="#rfc.section.3.1.3.2" rel="Chapter" title="3.1.3.2 Evaluator"/>
 <link href="#rfc.section.3.1.3.3" rel="Chapter" title="3.1.3.3 Report Generator"/>
@@ -568,7 +568,7 @@ ul.toc a:first-child {
 <ul><li>3.1.   <a href="#rfc.section.3.1">Component Roles</a></li>
 <ul><li>3.1.1.   <a href="#rfc.section.3.1.1">Provider</a></li>
 <li>3.1.2.   <a href="#rfc.section.3.1.2">Consumer</a></li>
-<li>3.1.3.   <a href="#rfc.section.3.1.3">Types of Providers and Controllers</a></li>
+<li>3.1.3.   <a href="#rfc.section.3.1.3">Types of Providers and Consumers</a></li>
 <ul><li>3.1.3.1.   <a href="#rfc.section.3.1.3.1">Collector</a></li>
 <li>3.1.3.2.   <a href="#rfc.section.3.1.3.2">Evaluator</a></li>
 <li>3.1.3.3.   <a href="#rfc.section.3.1.3.3">Report Generator</a></li>
@@ -663,7 +663,7 @@ ul.toc a:first-child {
 <p id="rfc.section.3.1.2.p.3">The Consumer implements the capabilities and functions that must be handled in order to enable a Posture Assessment Information Request. Requests can be either for a single posture attribute or a set of posture attributes; those attributes can be the raw information, or an evaluation result based upon that information.  The Consumer may further choose to query for the information directly (one-time query), or to request for updates to be provided as the Posture Assessment Information changes (subscription). A request could be made directly to an explicitly identified Provider, but a Consumer may also desire to obtain the information without having to know the available Providers.</p>
 <p id="rfc.section.3.1.2.p.4">There may be instances where a Consumer may be requesting information from various Providers and, due to its policy or application requirements, may need to be better informed of the Providers and their capabilities. In those use cases, a Consumer may also request to discover the respective capabilities of those Providers using the discovery function of the Controller (see <a href="#controller">Section 3.1.4</a>) or may request metadata reflecting the capabilities of the Providers.</p>
 <p id="rfc.section.3.1.2.p.5">The Controller (described below) must authorize a Consumer to acquire the information it is requesting. The Consumer may also be subject to limits or constraints on the numbers, types, sizes, and rate of requests.</p>
-<h1 id="rfc.section.3.1.3"><a href="#rfc.section.3.1.3">3.1.3.</a> <a href="#provider-consumer-types" id="provider-consumer-types">Types of Providers and Controllers</a></h1>
+<h1 id="rfc.section.3.1.3"><a href="#rfc.section.3.1.3">3.1.3.</a> <a href="#provider-consumer-types" id="provider-consumer-types">Types of Providers and Consumers</a></h1>
 <p id="rfc.section.3.1.3.p.1">SACM Providers and Consumers can perform a variety of SACM-related tasks.  For example, a Collector can perform Collection tasks; an Evaluator can perform Evaluation tasks.  A single Provider or Consumer may be able to perform only one task, or multiple tasks. SACM defines the following types of Providers/Consumers:</p>
 <h1 id="rfc.section.3.1.3.1"><a href="#rfc.section.3.1.3.1">3.1.3.1.</a> <a href="#collector" id="collector">Collector</a></h1>
 <p id="rfc.section.3.1.3.1.p.1">A collector consumes Guidance and/or other Posture Assessment Information; it provides Posture Assessment Information. Collectors may be internal or external.</p>
