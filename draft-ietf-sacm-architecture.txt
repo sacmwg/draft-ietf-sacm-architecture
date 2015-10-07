@@ -55,7 +55,7 @@ Copyright Notice
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 1]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    publication of this document.  Please review these documents
@@ -73,7 +73,7 @@ Table of Contents
      3.1.  Component Roles . . . . . . . . . . . . . . . . . . . . .   5
        3.1.1.  Provider  . . . . . . . . . . . . . . . . . . . . . .   6
        3.1.2.  Consumer  . . . . . . . . . . . . . . . . . . . . . .   6
-       3.1.3.  Types of Providers and Consumers  . . . . . . . . . .   7
+       3.1.3.  Types of Providers and Controllers  . . . . . . . . .   7
          3.1.3.1.  Collector . . . . . . . . . . . . . . . . . . . .   7
          3.1.3.2.  Evaluator . . . . . . . . . . . . . . . . . . . .   8
          3.1.3.3.  Report Generator  . . . . . . . . . . . . . . . .   9
@@ -111,7 +111,7 @@ Table of Contents
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 2]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    This document addresses general and architectural requirements
@@ -167,7 +167,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 3]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    in SACM, such as Endpoint Attribute Collection or Target Endpoint
@@ -223,45 +223,45 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 4]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
-                        +--------------------------------------+
-                        | +--------------------------------------+
-                        | | +--------------------------------------+
-                        | | |                                      |
-                        +-| |            Consumer (C)              |
-                          +-|                                      |
-                            +--------------------------------------+
-                              /   \         /   \            /   \
-                             /     \       /     \          /     \
-                             -     -       -  d  -          -     -
-                              || ||A        | a  |B          |   |C
-                              || ||         | t  |           |   |
-                             -     -       -  a  -           |   |
-                             \     /       \     /           |   |
-                              \   /         \   /            |   |
-                           /|---------------------|\         |   |
-                    /|----/                         \--------| d |--|\
-                   /     /      Controller (Cr)      \ ctrl  | a |    \
-                   \     \                           / plane | t |    /
-                    \|----\                         /--------| a |--|/
-                           \|---------------------|/         |   |
-                              /   \         /   \            |   |
-                             /     \       /     \           |   |
-                             -     -       -  d  -           |   |
-                              || ||A        | a |B           |   |C
-                              || ||         | t |            |   |
-                             -     -       -  a  -          -     -
-                             \     /       \     /          \     /
-                              \   /         \   /            \   /
-                            +------------------------------------+
-                            |                                    |-+
-                            |            Provider (P)             | |
-                            |                                      | |-+
-                            +------------------------------------+ | |
-                              +------------------------------------+ |
-                                +------------------------------------+
+                         +--------------------------------------+
+                         | +--------------------------------------+
+                         | | +--------------------------------------+
+                         | | |                                      |
+                         +-| |            Consumer (C)              |
+                           +-|                                      |
+                             +--------------------------------------+
+                               /   \         /   \            /   \
+                              /     \       /     \          /     \
+                              -     -       -  d  -          -     -
+                               || ||A        | a  |B          |   |C
+                               || ||         | t  |           |   |
+                              -     -       -  a  -           |   |
+                              \     /       \     /           |   |
+                               \   /         \   /            |   |
+                            /|---------------------|\         |   |
+                     /|----/                         \--------| d |--|\
+                    /     /      Controller (Cr)      \ ctrl  | a |    \
+                    \     \                           / plane | t |    /
+                     \|----\                         /--------| a |--|/
+                            \|---------------------|/         |   |
+                               /   \         /   \            |   |
+                              /     \       /     \           |   |
+                              -     -       -  d  -           |   |
+                               || ||A        | a |B           |   |C
+                               || ||         | t |            |   |
+                              -     -       -  a  -          -     -
+                              \     /       \     /          \     /
+                               \   /         \   /            \   /
+                             +------------------------------------+
+                             |                                    |-+
+                             |            Provider (P)            | |
+                             |                                    | |-+
+                             +------------------------------------+ | |
+                               +------------------------------------+ |
+                                 +------------------------------------+
 
 
 
@@ -279,7 +279,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 5]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    individual endpoints may be a target endpoint, a component, or both
@@ -335,7 +335,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 6]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    As described in Section 2.2 of the SACM Use Cases
@@ -372,7 +372,7 @@ Internet-Draft              Abbreviated Title                  July 2015
    to limits or constraints on the numbers, types, sizes, and rate of
    requests.
 
-3.1.3.  Types of Providers and Consumers
+3.1.3.  Types of Providers and Controllers
 
    SACM Providers and Consumers can perform a variety of SACM-related
    tasks.  For example, a Collector can perform Collection tasks; an
@@ -391,7 +391,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 7]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
 3.1.3.1.1.  Internal Collector
@@ -406,7 +406,7 @@ Internet-Draft              Abbreviated Title                  July 2015
    assets for reasons including, but not limited to, posture assessment.
    Collectors that are not primarily intended to support posture
    assessment (e.g. intrusion detection systems) may still provide
-   information that speaks to endpoint posture (e.g. behavioral
+   information that speaks to endpoint posture (e.g.  behavioral
    information).
 
    Examples:
@@ -447,7 +447,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 8]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    evaluations of posture attributes, or previous reports of Evaluation
@@ -486,11 +486,11 @@ Internet-Draft              Abbreviated Title                  July 2015
     Consumer.  Implements only control plane functions.  A Controller
     acting as a Broker:
 
-    *  Receives a request for information from a Consumer and instructs
-       the Consumer where and how retrieve the requested information.
+   o  Receives a request for information from a Consumer and instructs
+      the Consumer where and how retrieve the requested information.
 
-    *  Receives a publication request from a Provider and instructs the
-       Provider where and how to deliver the published information.
+   o  Receives a publication request from a Provider and instructs the
+      Provider where and how to deliver the published information.
 
    The information itself is neither distributed nor stored by the
    Controller.
@@ -503,16 +503,16 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016                [Page 9]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
-    *  Receives a request for information from a Consumer, retrieves the
-       information from the appropriate Providers, and provides the
-       information to the Consumer.
+   o  Receives a request for information from a Consumer, retrieves the
+      information from the appropriate Providers, and provides the
+      information to the Consumer.
 
-    *  Receives a publication request from a Provider, accepts the
-       published information, and distributes it to appropriate
-       consumers.
+   o  Receives a publication request from a Provider, accepts the
+      published information, and distributes it to appropriate
+      consumers.
 
    The information itself is distributed by, but not stored by, the
    Controller.
@@ -521,13 +521,13 @@ Internet-Draft              Abbreviated Title                  July 2015
     and providing stored data to a Consumer.  Implements both control
     and data plane functions.  A Controller acting as a Repository:
 
-    *  Receives a request for information from a Consumer, retrieves the
-       information from its data stores, and provides the information to
-       the Consumer.
+   o  Receives a request for information from a Consumer, retrieves the
+      information from its data stores, and provides the information to
+      the Consumer.
 
-    *  Receives a publication request from a provider, stores the
-       published information, and distributes it to appropriate
-       Consumers.
+   o  Receives a publication request from a provider, stores the
+      published information, and distributes it to appropriate
+      Consumers.
 
    The information itself is both handled by and stored by the
    Controller.
@@ -559,7 +559,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 10]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    The Controller, acting as a management control plane, helps define
@@ -615,7 +615,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 11]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
     as a management or control function through the abstracted
@@ -650,11 +650,11 @@ Internet-Draft              Abbreviated Title                  July 2015
     independent of the actual information-sharing communication channel.
     This supports use cases where:
 
-    *  Consumers may request information independent of knowing the
-       identities of the Providers.
+   o  Consumers may request information independent of knowing the
+      identities of the Providers.
 
-    *  Providers may want to share the information without prior
-       solicitation.
+   o  Providers may want to share the information without prior
+      solicitation.
 
    The architecture must account for an abstraction where a Controller
    may be defined to effect the authentication of the Consumers and
@@ -671,7 +671,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 12]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    Identity Management:  Since Identity Management for authentication
@@ -727,7 +727,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 13]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
                       +-------------------------------+
@@ -783,7 +783,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 14]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
     interact between them is outside the scope of SACM (e.g. no
@@ -839,7 +839,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 15]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
                                    +-------------+
@@ -895,7 +895,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 16]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    TODO - add example of / more content around interactions with
@@ -951,7 +951,7 @@ Internet-Draft              Abbreviated Title                  July 2015
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 17]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    there may be other devices, modules or components in the path between
@@ -965,7 +965,7 @@ Internet-Draft              Abbreviated Title                  July 2015
    [I-D.ietf-sacm-requirements]
               Cam-Winget, N. and L. Lorenzin, "Secure Automation and
               Continuous Monitoring (SACM) Requirements", draft-ietf-
-              sacm-requirements-08 (work in progress), July 2015.
+              sacm-requirements-09 (work in progress), July 2015.
 
    [I-D.ietf-sacm-terminology]
               Birkholz, H., "Secure Automation and Continuous Monitoring
@@ -1007,7 +1007,7 @@ Authors' Addresses
 
 Cam-Winget, et al.       Expires January 2, 2016               [Page 18]
 
-Internet-Draft              Abbreviated Title                  July 2015
+Internet-Draft              SACM Architecture                  July 2015
 
 
    Nancy Cam-Winget (editor)
