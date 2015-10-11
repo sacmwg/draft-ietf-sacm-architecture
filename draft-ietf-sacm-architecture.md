@@ -16,7 +16,6 @@ abbrev: SACM Architecture
 area: Security
 wg: SACM
 kw: template
-date: 2015-07
 author:
 - role: editor
   ins: N. Cam-Winget
