@@ -16,7 +16,7 @@
 <rfc ipr="trust200902" docName="draft-ietf-sacm-architecture-latest" category="info">
 
   <front>
-    <title abbrev="Abbreviated Title">Secure Automation and Continuous Monitoring (SACM) Architecture</title>
+    <title abbrev="SACM Architecture">Secure Automation and Continuous Monitoring (SACM) Architecture</title>
 
     <author initials="N." surname="Cam-Winget" fullname="Nancy Cam-Winget" role="editor">
       <organization>Cisco Systems</organization>
@@ -73,7 +73,7 @@
 
     <date year="2015" month="July"/>
 
-    <area>General</area>
+    <area>Security</area>
     <workgroup>SACM</workgroup>
     <keyword>template</keyword>
 
@@ -83,7 +83,8 @@
 <t>This document defines an architecture for standardization of interfaces,
 protocols, and information
 models related to security automation and continuous monitoring. It describes
-the basic architecture, components, and interfaces defined to enable the collection, acquisition,
+the basic architecture, components, and interfaces defined to enable the
+collection, acquisition,
 and verification of Posture
 and Posture Assessments.</t>
 
@@ -99,7 +100,14 @@ and Posture Assessments.</t>
 
 <section anchor="intro" title="Introduction">
 
-<t>Several data models and protocols (including - but not limited to - NEA, TCG TNC, SCAP, SWIDs, XMPP, etc.) are in use today that allow different applications to perform the collection, acquisition, and assessment of posture.  These applications can vary from being focused on general system and security management to specialized configuration, compliance, and control systems. With an existing varied set of applications, there is a strong desire to standardize data models, protocols, and interfaces to better allow for the automation of such data processes.</t>
+<t>Several data models and protocols (including - but not limited to - NEA,
+TCG TNC, SCAP, SWIDs, XMPP, etc.) are in use today that allow different applications
+to perform the collection, acquisition, and assessment of posture.  These
+applications can vary from being focused on general system and security management
+to specialized configuration, compliance, and control systems. With an existing
+varied set of applications, there is a strong desire to standardize data
+models, protocols, and interfaces to better allow for the automation of such
+data processes.</t>
 
 <t>This document addresses general and architectural requirements defined in <xref target="I-D.ietf-sacm-requirements"/>.
 The architecture described enables standardized collection, acquisition,
@@ -135,19 +143,45 @@ must support multiple processes.
 The need for complex characterization and assessment necessitates components
 and functions that
 interoperate and can build off each other to enable far-ranging and/or deep-diving
-analysis. SACM is standardizing an information model, data models, operations, and transports that will allow for administrators to share with others and to use data from others interoperably.</t>
+analysis. SACM is standardizing an information model, data models, operations,
+and transports that will allow for administrators to share with others and
+to use data from others interoperably.</t>
 
 </section>
 <section anchor="arch" title="Architectural Overview">
-<t>At a high level, the SACM architecture describes "Where" and "How" information and assessment of posture may be collected, processed (e.g. normalization, translation, aggregation, etc.), assessed, exchanged, and/or stored. This section provides an architectural overview of 1.) the basic architectural building blocks, which – in combination – constitute SACM components (the entities, the "where"), and 2.) the relationships and interaction between these building blocks on the data plane and control plane (communications and flows between entities, the "how").</t>
 
-<t>The SACM architecture provides the basic means to describe and compose SACM components. Components enable the basic functionality in SACM, such as Endpoint Attribute Collection or Target Endpoint Posture Assessment.</t>
+<t>At a high level, the SACM architecture describes “Where” and “How” information
+and assessment of posture may be collected, processed (e.g. normalization,
+translation, aggregation, etc.), assessed, exchanged, and/or stored. This
+section provides an architectural overview of 1.) the basic architectural
+building blocks, which – in combination – constitute SACM components (the
+entities, the “where”), and 2.) the relationships and interaction between
+these building blocks on the data plane and control plane (communications
+and flows between entities, the “how”).</t>
 
-<t>The role(s) a component plays in the SACM architecture are determined by the function(s) that component instantiates. Three main component roles are defined: a Consumer (C), a Provider (P), and a Controller (Cr) used to facilitate some of the security functions such as authentication and authorization and other metadata functions. See <xref target="roles"/> for details on roles.</t>  
-  
-<t>In SACM, components are composed of functions, the modular building blocks in the SACM architecture. The SACM architecture defines the purpose of these functions. Attributes and operations used by component functions are described in other SACM documents. See <xref target="functions"/> for details on component functions.</t>
+<t>The SACM architecture provides the basic means to describe and compose SACM
+components. Components enable the basic functionality in SACM, such as Endpoint
+Attribute Collection or Target Endpoint Posture Assessment.</t>
 
-<t>Functions use SACM interfaces for communications between components.  Interfaces handle management and control functions (such as authentication, authorization, registration, and discovery), and enable SACM components to share information (via publication, query, and subscription). Three primary interfaces are defined: an interface for management and control (A), an interface for data communication between the controller and providers or consumers (B), and an interface for data communication directly between a provider and a consumer (C). See <xref target="interfaces"/> for details on interfaces.</t>
+<t>The role(s) a component plays in the SACM architecture are determined by
+the function(s) that component instantiates. Three main component roles are
+defined: a Consumer (C), a Provider (P), and a Controller (Cr) used to facilitate
+some of the security functions such as authentication and authorization and
+other metadata functions. See <xref target="roles"/> for details on roles.</t>
+
+<t>In SACM, components are composed of functions, the modular building blocks
+in the SACM architecture. The SACM architecture defines the purpose of these
+functions. Attributes and operations used by component functions are described
+in other SACM documents. See <xref target="functions"/> for details on component functions.</t>
+
+<t>Functions use SACM interfaces for communications between components.  Interfaces
+handle management and control functions (such as authentication, authorization,
+registration, and discovery), and enable SACM components to share information
+(via publication, query, and subscription). Three primary interfaces are
+defined: an interface for management and control (A), an interface for data
+communication between the controller and providers or consumers (B), and
+an interface for data communication directly between a provider and a consumer
+(C). See <xref target="interfaces"/> for details on interfaces.</t>
 
 <t><xref target="simple-architectural-model"/> illustrates the relationships between component roles and interfaces:</t>
 
@@ -183,8 +217,8 @@ analysis. SACM is standardizing an information model, data models, operations, a
                              \   /         \   /            \   /
                            +------------------------------------+
                            |                                    |-+
-                           |            Provider (P)             | |
-                           |                                      | |-+
+                           |            Provider (P)            | |
+                           |                                    | |-+
                            +------------------------------------+ | |
                              +------------------------------------+ |
                                +------------------------------------+
@@ -195,7 +229,8 @@ analysis. SACM is standardizing an information model, data models, operations, a
 
 <section anchor="roles" title="Component Roles">
 
-<t>An endpoint, as defined in <xref target="I-D.ietf-sacm-terminology"/>, can operate in two primary ways: as the target of an assessment, and/or as a
+<t>An endpoint, as defined in <xref target="I-D.ietf-sacm-terminology"/>, can operate in two primary ways: as the target of an assessment, and/or
+as a
 functional component
 of the SACM architecture that can instantiate one or more functions (see <xref target="functions"/>).
 In the SACM architecture, individual endpoints may be a target endpoint,
@@ -236,7 +271,9 @@ specific data model and protocol. It may use a standard data model and/or
 protocol, a
 non-standard data model and/or protocol, or any combination of standard and
 non-standard
-data models and protocols.  However, it must support either one or more standard data models, or one or more standard protocols. It may also choose to advertise its capabilities
+data models and protocols.  However, it must support either one or more standard
+data models, or one or more standard protocols. It may also choose to advertise
+its capabilities
 through a
 metadata abstraction within the data model itself, or through the use of
 the registration
@@ -307,42 +344,65 @@ numbers, types, sizes, and rate of requests.</t>
 
 </section>
 <section anchor="provider-consumer-types" title="Types of Providers and Controllers">
-<t>SACM Providers and Consumers can perform a variety of SACM-related tasks.  For example, a Collector can perform Collection tasks; an Evaluator can perform Evaluation tasks.  A single Provider or Consumer may be able to perform only one task, or multiple tasks. SACM defines the following types of Providers/Consumers:</t>
+
+<t>SACM Providers and Consumers can perform a variety of SACM-related tasks.
+For example, a Collector can perform Collection tasks; an Evaluator can
+perform Evaluation tasks.  A single Provider or Consumer may be able to perform
+only one task, or multiple tasks. SACM defines the following types of Providers/Consumers:</t>
 
 <section anchor="collector" title="Collector">
 
-<t>A collector consumes Guidance and/or other Posture Assessment Information; it provides Posture Assessment Information. Collectors may be internal or external.</t>
+<t>A collector consumes Guidance and/or other Posture Assessment Information;
+it provides Posture Assessment Information. Collectors may be internal or
+external.</t>
 
 <section anchor="internal-collector" title="Internal Collector">
 
-<t>An internal collector is a collector that runs on the endpoint and collects posture information locally.</t>
+<t>An internal collector is a collector that runs on the endpoint and collects
+posture information locally.</t>
 
 </section>
 <section anchor="external-collector" title="External Collector">
 
-<t>An external collector is a collector that observes endpoints from outside. These collectors may be configured and operated to manage assets for reasons including, but not limited to, posture assessment. Collectors that are not primarily intended to support posture assessment (e.g. intrusion detection systems) may still provide information that speaks to endpoint posture (e.g. behavioral information).</t>
+<t>An external collector is a collector that observes endpoints from outside.
+These collectors may be configured and operated to manage assets for reasons
+including, but not limited to, posture assessment. Collectors that are not
+primarily intended to support posture assessment (e.g. intrusion detection
+systems) may still provide information that speaks to endpoint posture (e.g.
+behavioral information).</t>
 
 <t>Examples:</t>
 
 <t><list style="symbols">
-  <t>A RADIUS server, which collects information about which endpoints have logged onto the network</t>
-  <t>A network profiling system, which collects information by discovering and classifying network nodes</t>
-  <t>A Network Intrusion Detection System (NIDS) sensor, which collects information about endpoint behavior by observing network traffic</t>
-  <t>A vulnerability scanner, which collects information about endpoint configuration by scanning endpoints</t>
-  <t>A hypervisor, which collects information about endpoints running as virtual guests in its host environment</t>
-  <t>A management system that configures and installs software on the endpoint, which collects information based on its provisioning activities</t>
+  <t>A RADIUS server, which collects information about which endpoints have logged
+onto the network</t>
+  <t>A network profiling system, which collects information by discovering and
+classifying network nodes</t>
+  <t>A Network Intrusion Detection System (NIDS) sensor, which collects information
+about endpoint behavior by observing network traffic</t>
+  <t>A vulnerability scanner, which collects information about endpoint configuration
+by scanning endpoints</t>
+  <t>A hypervisor, which collects information about endpoints running as virtual
+guests in its host environment</t>
+  <t>A management system that configures and installs software on the endpoint,
+which collects information based on its provisioning activities</t>
 </list></t>
 
 </section>
 <section anchor="interactions-with-endpoint" title="Collector Interactions With Target Endpoints">
 
-<t>TODO - examples of endpoint interactions with local internal collector (e.g. NEA client), endpoint with remote internal collector (SNMP query), and external collector (sensor)</t>
+<t>TODO - examples of endpoint interactions with local internal collector (e.g.
+NEA client), endpoint with remote internal collector (SNMP query), and external
+collector (sensor)</t>
 
 </section>
 </section>
 <section anchor="evaluator" title="Evaluator">
 
-<t>An evaluator consumes Posture Assessment Information, Evaluation Results, and/or Guidance; it provides Evaluation Results. An evaluator may consume endpoint attribute assertions, previous evaluations of posture attributes, or previous reports of Evaluation Results.</t>
+<t>An evaluator consumes Posture Assessment Information, Evaluation Results,
+and/or Guidance; it provides Evaluation Results. An evaluator may consume
+endpoint attribute assertions, previous evaluations of posture attributes,
+or previous reports of Evaluation Results.</t>
 
 <t>TODO: update the terminology doc to reflect this definition</t>
 
@@ -351,14 +411,16 @@ numbers, types, sizes, and rate of requests.</t>
 </section>
 <section anchor="report-generator" title="Report Generator">
 
-<t>A report generator consumes Posture Assessment Information, Evaluation Results, and/or Guidance; it provides reports. These reports are based on:</t>
+<t>A report generator consumes Posture Assessment Information, Evaluation Results,
+and/or Guidance; it provides reports. These reports are based on:</t>
 
 <t><list style="symbols">
   <t>Endpoint Attribute Assertions, including Evaluation Results</t>
   <t>Other Reports (e.g., a weekly report may be created from daily reports)</t>
 </list></t>
 
-<t>It may summarize data continually, as the data arrives. It also may summarize data in response to an ad hoc query.</t>
+<t>It may summarize data continually, as the data arrives. It also may summarize
+data in response to an ad hoc query.</t>
 
 </section>
 <section anchor="data-store" title="Data Store">
@@ -366,7 +428,7 @@ numbers, types, sizes, and rate of requests.</t>
 <t>A data store consumes any data; it provides any data.</t>
 
 </section>
-  </section>
+</section>
 <section anchor="controller" title="Controller">
 
 <t>The Controller (Cr or Controller) is a component defined to facilitate information
@@ -376,37 +438,37 @@ system functions.  SACM defines three types of Controller:</t>
 
 <t><list style="hanging" hangIndent="1">
   <t hangText='Broker:'>
-  Intermediary negotiating connection between Provider and Consumer. Implements only control plane functions. A Controller
-acting as a Broker:
+  Intermediary negotiating connection between Provider and Consumer. Implements
+only control plane functions. A Controller
+acting as a Broker:</t>
+</list></t>
 
-      <list style="symbols">
-        <t>Receives a request for information from a Consumer and instructs the Consumer
+<t><list style="symbols">
+  <t>Receives a request for information from a Consumer and instructs the Consumer
 where and how
 retrieve the requested information.</t>
-        <t>Receives a publication request from a Provider and instructs the Provider
+  <t>Receives a publication request from a Provider and instructs the Provider
 where and how to
 deliver the published information.</t>
-      </list>
-  </t>
 </list></t>
 
 <t>The information itself is neither distributed nor stored by the Controller.</t>
 
 <t><list style="hanging" hangIndent="1">
   <t hangText='Proxy:'>
-  Intermediary negotiating on behalf of a Consumer or Provider. Implements both control and data plane functions. A Controller
+  Intermediary negotiating on behalf of a Consumer or Provider. Implements
+both control and data plane functions. A Controller
 acting
-as a Proxy:
+as a Proxy:</t>
+</list></t>
 
-      <list style="symbols">
-        <t>Receives a request for information from a Consumer, retrieves the information
+<t><list style="symbols">
+  <t>Receives a request for information from a Consumer, retrieves the information
 from the
 appropriate Providers, and provides the information to the Consumer.</t>
-        <t>Receives a publication request from a Provider, accepts the published information,
+  <t>Receives a publication request from a Provider, accepts the published information,
 and
 distributes it to appropriate consumers.</t>
-      </list>
-  </t>
 </list></t>
 
 <t>The information itself is distributed by, but not stored by, the Controller.</t>
@@ -414,22 +476,23 @@ distributes it to appropriate consumers.</t>
 <t><list style="hanging" hangIndent="1">
   <t hangText='Repository:'>
   Intermediary receiving and storing data from a Provider, and providing stored
-data to a Consumer.  Implements both control and data plane functions. A Controller acting as a Repository:
+data to a Consumer.  Implements both control and data plane functions. A
+Controller acting as a Repository:</t>
+</list></t>
 
-      <list style="symbols">
-        <t>Receives a request for information from a Consumer, retrieves the information
+<t><list style="symbols">
+  <t>Receives a request for information from a Consumer, retrieves the information
 from its data
 stores, and provides the information to the Consumer.</t>
-        <t>Receives a publication request from a provider, stores the published information,
+  <t>Receives a publication request from a provider, stores the published information,
 and
 distributes it to appropriate Consumers.</t>
-      </list>
-  </t>
 </list></t>
 
 <t>The information itself is both handled by and stored by the Controller.</t>
 
-<t>A single instantiation of a Controller may be a Broker, Proxy, or Repository, or any combination thereof.</t>
+<t>A single instantiation of a Controller may be a Broker, Proxy, or Repository,
+or any combination thereof.</t>
 
 <t>Through the use of a discovery mechanism, Consumers can have visibility into
 the Providers
@@ -476,19 +539,21 @@ it is feasible to instantiate a Controller that provides both the management
 (and control) functions for
 SACM as well as providing the data plane services for the actual data,
 e.g. Posture Assessment Information flow. Note that Controllers may be implemented
-to only provide control plane functions (broker), or both control plane functions and data plane services (proxy or repository).</t>
+to only provide control plane functions (broker), or both control plane functions
+and data plane services (proxy or repository).</t>
 
 </section>
 </section>
 </section>
 <section anchor="interfaces" title="Interfaces between Consumers, Providers, and Controllers">
 
-<t>A SACM interface is a transport carrying operations (e.g. publication via a RESTful API).  As shown in <xref target="simple-architectural-model"/>, communication can proceed with
+<t>A SACM interface is a transport carrying operations (e.g. publication via
+a RESTful API).  As shown in <xref target="simple-architectural-model"/>, communication can proceed with
 the following interfaces and expected functions and behaviors:</t>
 
 <t><list style="hanging" hangIndent="1">
   <t hangText='A:'>
-  interface “A” shown in <xref target="simple-architectural-model"/>   handles the management and control functions that are needed to establish,
+  interface “A” shown in <xref target="simple-architectural-model"/> handles the management and control functions that are needed to establish,
 at minimum,
 a secure communication between Consumers and Providers. The interface must
 also handle
@@ -496,13 +561,13 @@ the functions to allow for the discovery and registration of the Providers
 as well as
 the ways in which Posture Assessment Information can be provided (or requested).</t>
   <t hangText='B:'>
-  interface “B” shown in <xref target="simple-architectural-model"/>   enables Providers to share their Posture Assessment Information spontaneously;
+  interface “B” shown in <xref target="simple-architectural-model"/> enables Providers to share their Posture Assessment Information spontaneously;
 similarly, it enables Consumers to request information without having to
 know the
 identities (or reachability) of all the Providers that can fulfill Consumers’
 requests.</t>
   <t hangText='C:'>
-  interface “C” shown in <xref target="simple-architectural-model"/>   illustrates the ability and desire for Consumers and Providers to be able
+  interface “C” shown in <xref target="simple-architectural-model"/> illustrates the ability and desire for Consumers and Providers to be able
 to
 communicate directly when a Provider is sharing Posture Assessment Information
 directly to a Consumer. The interface allows for the different data models
@@ -525,33 +590,37 @@ Information Provider.
 Those interfaces are outside the scope of SACM.</t>
 
 </section>
-
 <section anchor="functions" title="Component Functions">
 
-<t>SACM components are composed of a variety of functions, which may be instantiated on a single endpoint or on separate standalone endpoints providing various roles. An endpoint MUST implement one or more of these functions to be considered a SACM component. A SACM solution offers a set of functions across a set of SACM components.</t>
+<t>SACM components are composed of a variety of functions, which may be instantiated
+on a single endpoint or on separate standalone endpoints providing various
+roles. An endpoint MUST implement one or more of these functions to be considered
+a SACM component. A SACM solution offers a set of functions across a set
+of SACM components.</t>
 
-<t>The functions described here are the minimum set that is mandatory to implement in a SACM solution. A SACM solution MAY implement additional functions.</t>
+<t>The functions described here are the minimum set that is mandatory to implement
+in a SACM solution. A SACM solution MAY implement additional functions.</t>
 
 <section anchor="control-plane-functions" title="Control Plane Functions">
 
 <t>Control plane functions represent various services offered by the Controller
 to the Providers
-and Consumers to facilitate sharing of information. Control plane functions include, but are not limited to:</t>
+and Consumers to facilitate sharing of information. Control plane functions
+include, but are not limited to:</t>
 
 <t><list style="hanging" hangIndent="1">
   <t hangText='Authentication:'>
   The authentication of Consumers and Providers
 independent of the actual information-sharing communication channel. This
 supports
-use cases where:
+use cases where:</t>
+</list></t>
 
-      <list style="symbols">
-        <t>Consumers may request information independent of knowing the identities of
+<t><list style="symbols">
+  <t>Consumers may request information independent of knowing the identities of
 the
 Providers.</t>
-        <t>Providers may want to share the information without prior solicitation.</t>
-      </list>
-  </t>
+  <t>Providers may want to share the information without prior solicitation.</t>
 </list></t>
 
 <t>The architecture must account for an abstraction where a Controller may be
@@ -597,14 +666,23 @@ they can share the information.</t>
 
 </section>
 <section anchor="data-plane-functions" title="Data Plane Functions">
+
 <t>Subscription</t>
+
 <t>Publication</t>
+
 <t>Query</t>
+
 </section>
 </section>
 <section anchor="capabilities" title="Component Capabilities">
-  <t>TODO: add a discussion of "capability" as being able to talk a specific data model, data operations, or SACM transport</t>
-  <t>TODO: data plane capabilities / control plane capabilities can be discovered via querying the controller</t>
+
+<t>TODO: add a discussion of “capability” as being able to talk a specific data
+model, data operations, or SACM transport</t>
+
+<t>TODO: data plane capabilities / control plane capabilities can be discovered
+via querying the controller</t>
+
 </section>
 <section anchor="example" title="Example Illustration of Functions and Workflow">
 
@@ -824,15 +902,15 @@ that may observe the interfaces flowing through them.</t>
     <organization />
 </author>
 
-<date month='July' day='21' year='2015' />
+<date month='July' day='23' year='2015' />
 
 <abstract><t>This document defines the scope and set of requirements for the Secure Automation and Continuous Monitoring (SACM) architecture, data model and transport protocols.  The requirements and scope are based on the agreed upon use cases.</t></abstract>
 
 </front>
 
-<seriesInfo name='Internet-Draft' value='draft-ietf-sacm-requirements-08' />
+<seriesInfo name='Internet-Draft' value='draft-ietf-sacm-requirements-09' />
 <format type='TXT'
-        target='http://www.ietf.org/internet-drafts/draft-ietf-sacm-requirements-08.txt' />
+        target='http://www.ietf.org/internet-drafts/draft-ietf-sacm-requirements-09.txt' />
 </reference>
 
 
