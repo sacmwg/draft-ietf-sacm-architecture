@@ -12,7 +12,8 @@ install:
 - sudo pip install xml2rfc
 - ruby --version
 - gem  install kramdown-rfc2629
-script: 
+script:
+- ls
 - make ghpages
 env:
   global:
