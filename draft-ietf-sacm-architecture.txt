@@ -965,7 +965,7 @@ Internet-Draft              SACM Architecture                  July 2015
    [I-D.ietf-sacm-requirements]
               Cam-Winget, N. and L. Lorenzin, "Secure Automation and
               Continuous Monitoring (SACM) Requirements", draft-ietf-
-              sacm-requirements-09 (work in progress), July 2015.
+              sacm-requirements-10 (work in progress), October 2015.
 
    [I-D.ietf-sacm-terminology]
               Birkholz, H., "Secure Automation and Continuous Monitoring
