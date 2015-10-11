@@ -1,4 +1,7 @@
 language: python
+python:
+- 2.7
+sudo: required
 rvm:
   - 2.2.0
 before_install:
@@ -7,6 +10,8 @@ before_install:
 install:
 - deactivate
 - sudo pip install xml2rfc
+- ruby --version
+- gem  install kramdown-rfc2629
 script: 
 - make ghpages
 env:
