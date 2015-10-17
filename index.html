@@ -454,6 +454,7 @@ ul.toc a:first-child {
 
   <link href="#rfc.toc" rel="Contents"/>
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction"/>
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Requirements Language"/>
 <link href="#rfc.section.2" rel="Chapter" title="2 Problem Statement"/>
 <link href="#rfc.section.3" rel="Chapter" title="3 Architectural Overview"/>
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 Component Roles"/>
@@ -485,7 +486,7 @@ ul.toc a:first-child {
 
   <meta name="dct.creator" content="Cam-Winget, N., Ed., Lorenzin, L., McDonald, I., and A. Woland" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-sacm-architecture-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-7" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-10-17" />
   <meta name="dct.abstract" content="This document defines an architecture for standardization of interfaces, protocols, and information models related to security automation and continuous monitoring. It describes the basic architecture, components, and interfaces defined to enable the collection, acquisition, and verification of Posture and Posture Assessments." />
   <meta name="description" content="This document defines an architecture for standardization of interfaces, protocols, and information models related to security automation and continuous monitoring. It describes the basic architecture, components, and interfaces defined to enable the collection, acquisition, and verification of Posture and Posture Assessments." />
 
@@ -509,7 +510,7 @@ ul.toc a:first-child {
   <td class="right">L. Lorenzin</td>
 </tr>
 <tr>
-  <td class="left">Expires: January 2, 2016</td>
+  <td class="left">Expires: April 19, 2016</td>
   <td class="right">Pulse Secure</td>
 </tr>
 <tr>
@@ -530,7 +531,7 @@ ul.toc a:first-child {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">July 2015</td>
+  <td class="right">October 17, 2015</td>
 </tr>
 
     	
@@ -550,7 +551,7 @@ ul.toc a:first-child {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 2, 2016.</p>
+<p>This Internet-Draft will expire on April 19, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -563,7 +564,8 @@ ul.toc a:first-child {
   <ul class="toc">
 
   	<li>1.   <a href="#rfc.section.1">Introduction</a></li>
-<li>2.   <a href="#rfc.section.2">Problem Statement</a></li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Requirements Language</a></li>
+</ul><li>2.   <a href="#rfc.section.2">Problem Statement</a></li>
 <li>3.   <a href="#rfc.section.3">Architectural Overview</a></li>
 <ul><li>3.1.   <a href="#rfc.section.3.1">Component Roles</a></li>
 <ul><li>3.1.1.   <a href="#rfc.section.3.1.1">Provider</a></li>
@@ -595,55 +597,64 @@ ul.toc a:first-child {
 <p id="rfc.section.1.p.1">Several data models and protocols (including - but not limited to - NEA, TCG TNC, SCAP, SWIDs, XMPP, etc.) are in use today that allow different applications to perform the collection, acquisition, and assessment of posture.  These applications can vary from being focused on general system and security management to specialized configuration, compliance, and control systems. With an existing varied set of applications, there is a strong desire to standardize data models, protocols, and interfaces to better allow for the automation of such data processes.</p>
 <p id="rfc.section.1.p.2">This document addresses general and architectural requirements defined in <a href="#I-D.ietf-sacm-requirements">[I-D.ietf-sacm-requirements]</a>.  The architecture described enables standardized collection, acquisition, and verification of Posture and Posture Assessments.  This architecture includes the components and interfaces that can be used to better identify the Information Model and type(s) of transport protocols needed for communication.</p>
 <p id="rfc.section.1.p.3">This document uses terminology defined in <a href="#I-D.ietf-sacm-terminology">[I-D.ietf-sacm-terminology]</a>.</p>
+<h1 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1.</a> <a href="#requirements-language" id="requirements-language">Requirements Language</a></h1>
+<p id="rfc.section.1.1.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in RFC 2119 <a href="#RFC2119">[RFC2119]</a>.</p>
+<p id="rfc.section.1.1.p.2">When the words appear in lower case, their natural language meaning is used.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#problem-statement" id="problem-statement">Problem Statement</a></h1>
 <p id="rfc.section.2.p.1">Securing information and the systems that store, process, and transmit that information is a challenging task for organizations of all sizes, and many security practitioners spend much of their time on manual processes.  Administrators can&#8217;t get technology from disparate sources to work together; they need information to make decisions, but the information is not available.  Everyone is collecting the same data, but storing it as different information.  Administrators therefore need to collect data and craft their own information, which may not be accurate or interoperable because it&#8217;s customized by each administrator, not shared.</p>
-<p id="rfc.section.2.p.2">Security automation and continuous monitoring require a large and broad set of mission and business processes; to make the most effective of use of technology, the same data must support multiple processes.  The need for complex characterization and assessment necessitates components and functions that interoperate and can build off each other to enable far-ranging and/or deep-diving analysis. SACM is standardizing an information model, data models, operations, and transports that will allow for administrators to share with others and to use data from others interoperably.</p>
+<p id="rfc.section.2.p.2">Security automation and continuous monitoring require a large and broad set of mission and business processes; to make the most effective use of technology, the same data must support multiple processes.  The need for complex characterization and assessment necessitates components and functions that interoperate and can build off each other to enable far-ranging and/or deep-diving analysis. SACM is standardizing an information model, data models, operations, and transports that will allow for administrators to share with others and to use data from others interoperably.</p>
 <h1 id="rfc.section.3"><a href="#rfc.section.3">3.</a> <a href="#arch" id="arch">Architectural Overview</a></h1>
-<p id="rfc.section.3.p.1">At a high level, the SACM architecture describes &#8220;Where&#8221; and &#8220;How&#8221; information and assessment of posture may be collected, processed (e.g. normalization, translation, aggregation, etc.), assessed, exchanged, and/or stored. This section provides an architectural overview of 1.) the basic architectural building blocks, which &#8211; in combination &#8211; constitute SACM components (the entities, the &#8220;where&#8221;), and 2.) the relationships and interaction between these building blocks on the data plane and control plane (communications and flows between entities, the &#8220;how&#8221;).</p>
-<p id="rfc.section.3.p.2">The SACM architecture provides the basic means to describe and compose SACM components. Components enable the basic functionality in SACM, such as Endpoint Attribute Collection or Target Endpoint Posture Assessment.</p>
-<p id="rfc.section.3.p.3">The role(s) a component plays in the SACM architecture are determined by the function(s) that component instantiates. Three main component roles are defined: a Consumer (C), a Provider (P), and a Controller (Cr) used to facilitate some of the security functions such as authentication and authorization and other metadata functions. See <a href="#roles">Section 3.1</a> for details on roles.</p>
-<p id="rfc.section.3.p.4">In SACM, components are composed of functions, the modular building blocks in the SACM architecture. The SACM architecture defines the purpose of these functions. Attributes and operations used by component functions are described in other SACM documents. See <a href="#functions">Section 5</a> for details on component functions.</p>
-<p id="rfc.section.3.p.5">Functions use SACM interfaces for communications between components.  Interfaces handle management and control functions (such as authentication, authorization, registration, and discovery), and enable SACM components to share information (via publication, query, and subscription). Three primary interfaces are defined: an interface for management and control (A), an interface for data communication between the controller and providers or consumers (B), and an interface for data communication directly between a provider and a consumer (C). See <a href="#interfaces">Section 4</a> for details on interfaces.</p>
+<p id="rfc.section.3.p.1">At a high level, the SACM architecture describes &#8220;Where&#8221; and &#8220;How&#8221; information and assessment of posture may be collected, processed (e.g. normalization, translation, aggregation, etc.), assessed, exchanged, and/or stored. This section provides an architectural overview of</p>
+<p/>
+
+<ul>
+  <li>the basic architectural building blocks, which &#8211; in combination &#8211; constitute SACM components (the entities, the &#8220;where&#8221;), and</li>
+  <li>the relationships and interaction between these building blocks on the data plane and control plane (communications and flows between entities, the &#8220;how&#8221;).</li>
+</ul>
+<p id="rfc.section.3.p.3">The SACM architecture provides the basic means to describe and compose SACM components. Components enable the basic functionality in SACM, such as Endpoint Attribute Collection or Target Endpoint Posture Assessment.</p>
+<p id="rfc.section.3.p.4">The role(s) a component plays in the SACM architecture are determined by the function(s) that component instantiates. Three main component roles are defined: a Consumer (Cs), a Provider (Pr), and a Controller (Cr) used to facilitate some of the security functions such as authentication and authorization and other metadata functions. See <a href="#roles">Section 3.1</a> for details on roles.</p>
+<p id="rfc.section.3.p.5">In SACM, components are composed of functions, the modular building blocks in the SACM architecture. The SACM architecture defines the purpose of these functions. Attributes and operations used by component functions are described in other SACM documents. See <a href="#functions">Section 5</a> for details on component functions.</p>
+<p id="rfc.section.3.p.6">Functions use SACM interfaces for communications between components.  Interfaces handle management and control functions (such as authentication, authorization, registration, and discovery), and enable SACM components to share information (via publication, query, and subscription). Three primary interfaces are defined: an interface for management and control (A), an interface for data communication between the controller and providers or consumers (B), and an interface for data communication directly between a provider and a consumer (C). See <a href="#interfaces">Section 4</a> for details on interfaces.</p>
 <p><a href="#simple-architectural-model">Figure 1</a> illustrates the relationships between component roles and interfaces:</p>
 <div id="rfc.figure.1"/>
 <div id="simple-architectural-model"/>
 <pre>
-                       +--------------------------------------+
-                       | +--------------------------------------+
-                       | | +--------------------------------------+
-                       | | |                                      |
-                       +-| |            Consumer (C)              |
-                         +-|                                      |
-                           +--------------------------------------+
-                             /   \         /   \            /   \
-                            /     \       /     \          /     \
-                            -     -       -  d  -          -     -
-                             || ||A        | a  |B          |   |C
-                             || ||         | t  |           |   |
-                            -     -       -  a  -           |   |
-                            \     /       \     /           |   |
-                             \   /         \   /            |   |
-                          /|---------------------|\         |   |
-                   /|----/                         \--------| d |--|\
-                  /     /      Controller (Cr)      \ ctrl  | a |    \
-                  \     \                           / plane | t |    /
-                   \|----\                         /--------| a |--|/
-                          \|---------------------|/         |   |
-                             /   \         /   \            |   |
-                            /     \       /     \           |   |
-                            -     -       -  d  -           |   |
-                             || ||A        | a |B           |   |C
-                             || ||         | t |            |   |
-                            -     -       -  a  -          -     -
-                            \     /       \     /          \     /
-                             \   /         \   /            \   /
-                           +------------------------------------+
-                           |                                    |-+
-                           |            Provider (P)            | |
-                           |                                    | |-+
-                           +------------------------------------+ | |
-                             +------------------------------------+ |
-                               +------------------------------------+
+                      +--------------------------------------+
+                      | +--------------------------------------+
+                      | | +--------------------------------------+
+                      | | |                                      |
+                      +-| |            Consumer (Cs)             |
+                        +-|                                      |
+                          +--------------------------------------+
+                            /   \         /   \            /   \
+                           /     \       /     \          /     \
+                           -     -       -  d  -          -     -
+                            || ||A        | a  |B          |   |C
+                            || ||         | t  |           |   |
+                           -     -       -  a  -           |   |
+                           \     /       \     /           |   |
+                            \   /         \   /            |   |
+                         /|---------------------|\         |   |
+                  /|----/                         \--------| d |--|\
+                 /     /      Controller (Cr)      \ ctrl  | a |    \
+                 \     \                           / plane | t |    /
+                  \|----\                         /--------| a |--|/
+                         \|---------------------|/         |   |
+                            /   \         /   \            |   |
+                           /     \       /     \           |   |
+                           -     -       -  d  -           |   |
+                            || ||A        | a |B           |   |C
+                            || ||         | t |            |   |
+                           -     -       -  a  -          -     -
+                           \     /       \     /          \     /
+                            \   /         \   /            \   /
+                          +------------------------------------+
+                          |                                    |-+
+                          |            Provider (Pr)           | |
+                          |                                    | |-+
+                          +------------------------------------+ | |
+                            +------------------------------------+ |
+                              +------------------------------------+
 
 
 
@@ -652,13 +663,15 @@ ul.toc a:first-child {
 <h1 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1.</a> <a href="#roles" id="roles">Component Roles</a></h1>
 <p id="rfc.section.3.1.p.1">An endpoint, as defined in <a href="#I-D.ietf-sacm-terminology">[I-D.ietf-sacm-terminology]</a>, can operate in two primary ways: as the target of an assessment, and/or as a functional component of the SACM architecture that can instantiate one or more functions (see <a href="#functions">Section 5</a>).  In the SACM architecture, individual endpoints may be a target endpoint, a component, or both simultaneously.  An endpoint acting as a component may perform one or more roles.  Components can take on the role(s) of Provider, Consumer, and/or Controller.</p>
 <h1 id="rfc.section.3.1.1"><a href="#rfc.section.3.1.1">3.1.1.</a> <a href="#provider" id="provider">Provider</a></h1>
-<p id="rfc.section.3.1.1.p.1">The Provider (P or Provider) is the component that contributes Posture Assessment Information and/or Guidance either spontaneously or in response to a request. A Provider can be a Posture Evaluator, Posture Collector, Data Store (see <a href="#provider-consumer-types">Section 3.1.3</a>), or an application that has aggregated Posture Assessment Information that can be shared.</p>
+<p id="rfc.section.3.1.1.p.1">The Provider (Pr) is the component that contributes Posture Assessment Information and/or Guidance either spontaneously or in response to a request. A Provider can be a Posture Evaluator, Posture Collector, Data Store (see <a href="#provider-consumer-types">Section 3.1.3</a>), or an application that has aggregated Posture Assessment Information that can be shared.</p>
 <p id="rfc.section.3.1.1.p.2">The Provider implements the capabilities and functions that must be handled to share or provide Posture Assessment information.</p>
-<p id="rfc.section.3.1.1.p.3">A Provider may provide information spontaneously, or in response to a direct request from a Consumer. The information may be filtered or truncated to provide a subset of the requested information to honor the request. This truncation may be performed based on the Consumer&#8217;s request and/or the Provider&#8217;s ability to filter. The latter case may be due to security considerations (e.g. authorization restrictions due to domain segregation, privacy, etc.).</p>
-<p id="rfc.section.3.1.1.p.4">The Provider may only be able to share the Posture Assessment Information using a specific data model and protocol. It may use a standard data model and/or protocol, a non-standard data model and/or protocol, or any combination of standard and non-standard data models and protocols.  However, it must support either one or more standard data models, or one or more standard protocols. It may also choose to advertise its capabilities through a metadata abstraction within the data model itself, or through the use of the registration function of the Controller (see <a href="#controller">Section 3.1.4</a>).</p>
-<p id="rfc.section.3.1.1.p.5">The Provider must be authorized to provide the Posture Assessment Information and further, be authorized to do so with specific data models and protocols and/or for specific consumers.</p>
+<p id="rfc.section.3.1.1.p.3">One means by which a Provider shares information, is in response to a direct request from a Consumer.</p>
+<p id="rfc.section.3.1.1.p.4">A Provider may also share information spontaneously.  Use cases such as the change in a posture state require that a Provider be able to provide such changes or updates especially to Consumers such as Security Information and Event Management (SIEM) systems; similarly, SIEM applications that are providing live information require any such updates or changes to posture information to be provided spontaneously.  Authorization for the enabling for these unsolicited messages happens through the Controller at the time that both Provider and Consumers request authorization for (spontaneous) messages.</p>
+<p id="rfc.section.3.1.1.p.5">The information provided, may be filtered or truncated to provide a subset of the requested information to honor the request.  This truncation may be performed based on the Consumer&#8217;s request and/or the Provider&#8217;s ability to filter.  The latter case may be due to security considerations (e.g. authorization restrictions due to domain segregation, privacy, etc.).</p>
+<p id="rfc.section.3.1.1.p.6">The Provider may only be able to share the Posture Assessment Information using a specific data model and protocol. It may use a standard data model and/or protocol, a non-standard data model and/or protocol, or any combination of standard and non-standard data models and protocols.  However, it must support either one or more standard data models, or one or more standard protocols. It may also choose to advertise its capabilities through a metadata abstraction within the data model itself, or through the use of the registration function of the Controller (see <a href="#controller">Section 3.1.4</a>).</p>
+<p id="rfc.section.3.1.1.p.7">The Provider must be authorized to provide the Posture Assessment Information for specific consumers.</p>
 <h1 id="rfc.section.3.1.2"><a href="#rfc.section.3.1.2">3.1.2.</a> <a href="#requestor" id="requestor">Consumer</a></h1>
-<p id="rfc.section.3.1.2.p.1">The Consumer (C or Consumer) is the component that requests or accepts Posture Assessment Information and/or Guidance. A Consumer can be a Posture Evaluator, Report Generator, Data Store (see <a href="#data-plane-functions">Section 5.2</a>), or an application that consumes Posture Assessment Information in order to perform another function.</p>
+<p id="rfc.section.3.1.2.p.1">The Consumer (Cs) is the component that requests or accepts Posture Assessment Information and/or Guidance. A Consumer can be a Posture Evaluator, Report Generator, Data Store (see <a href="#data-plane-functions">Section 5.2</a>), or an application that consumes Posture Assessment Information in order to perform another function.</p>
 <p id="rfc.section.3.1.2.p.2">As described in Section 2.2 of the SACM Use Cases <a href="#I-D.ietf-sacm-use-cases">[I-D.ietf-sacm-use-cases]</a>, several usage scenarios are posed with different application types requesting posture assessment information. Whether it is a configuration verification system; a checklist verification system; or a system for detecting posture deviations, compliance or vulnerabilities, they all need to acquire information about Posture Assessment. The architectural component performing such requests is a Consumer.</p>
 <p id="rfc.section.3.1.2.p.3">The Consumer implements the capabilities and functions that must be handled in order to enable a Posture Assessment Information Request. Requests can be either for a single posture attribute or a set of posture attributes; those attributes can be the raw information, or an evaluation result based upon that information.  The Consumer may further choose to query for the information directly (one-time query), or to request for updates to be provided as the Posture Assessment Information changes (subscription). A request could be made directly to an explicitly identified Provider, but a Consumer may also desire to obtain the information without having to know the available Providers.</p>
 <p id="rfc.section.3.1.2.p.4">There may be instances where a Consumer may be requesting information from various Providers and, due to its policy or application requirements, may need to be better informed of the Providers and their capabilities. In those use cases, a Consumer may also request to discover the respective capabilities of those Providers using the discovery function of the Controller (see <a href="#controller">Section 3.1.4</a>) or may request metadata reflecting the capabilities of the Providers.</p>
@@ -666,7 +679,7 @@ ul.toc a:first-child {
 <h1 id="rfc.section.3.1.3"><a href="#rfc.section.3.1.3">3.1.3.</a> <a href="#provider-consumer-types" id="provider-consumer-types">Types of Providers and Controllers</a></h1>
 <p id="rfc.section.3.1.3.p.1">SACM Providers and Consumers can perform a variety of SACM-related tasks.  For example, a Collector can perform Collection tasks; an Evaluator can perform Evaluation tasks.  A single Provider or Consumer may be able to perform only one task, or multiple tasks. SACM defines the following types of Providers/Consumers:</p>
 <h1 id="rfc.section.3.1.3.1"><a href="#rfc.section.3.1.3.1">3.1.3.1.</a> <a href="#collector" id="collector">Collector</a></h1>
-<p id="rfc.section.3.1.3.1.p.1">A collector consumes Guidance and/or other Posture Assessment Information; it provides Posture Assessment Information. Collectors may be internal or external.</p>
+<p id="rfc.section.3.1.3.1.p.1">A collector consumes Guidance and/or other Posture Assessment Information; it provides Posture Assessment Information. Collectors may be internal or external. As a SACM component, a Collector may be a Consumer as it may consume guidance information and may also be a Provider as it may publish the collected information.</p>
 <h1 id="rfc.section.3.1.3.1.1"><a href="#rfc.section.3.1.3.1.1">3.1.3.1.1.</a> <a href="#internal-collector" id="internal-collector">Internal Collector</a></h1>
 <p id="rfc.section.3.1.3.1.1.p.1">An internal collector is a collector that runs on the endpoint and collects posture information locally.</p>
 <h1 id="rfc.section.3.1.3.1.2"><a href="#rfc.section.3.1.3.1.2">3.1.3.1.2.</a> <a href="#external-collector" id="external-collector">External Collector</a></h1>
@@ -700,7 +713,7 @@ ul.toc a:first-child {
 <h1 id="rfc.section.3.1.3.4"><a href="#rfc.section.3.1.3.4">3.1.3.4.</a> <a href="#data-store" id="data-store">Data Store</a></h1>
 <p id="rfc.section.3.1.3.4.p.1">A data store consumes any data; it provides any data.</p>
 <h1 id="rfc.section.3.1.4"><a href="#rfc.section.3.1.4">3.1.4.</a> <a href="#controller" id="controller">Controller</a></h1>
-<p id="rfc.section.3.1.4.p.1">The Controller (Cr or Controller) is a component defined to facilitate information sharing and to execute on security functions and overall SACM management and control system functions.  SACM defines three types of Controller:</p>
+<p id="rfc.section.3.1.4.p.1">The Controller (Cr or Controller) is a component defined to facilitate the overall SACM management and control system functions.  This component is responsible for handling the secure communications establishment (such as the authentication and authorization) between Providers and Consumers.  In addition, the Controller may also handle how the data may be routed.  While the architecture defines the Controller as a single component, implementations may implement this to suit the different deployment and scaling requirements.  In particular, for the data handling, SACM defines three types of Controller:</p>
 <p/>
 
 <dl>
@@ -712,8 +725,8 @@ ul.toc a:first-child {
 <ul>
   <li>Receives a request for information from a Consumer and instructs the Consumer where and how retrieve the requested information.</li>
   <li>Receives a publication request from a Provider and instructs the Provider where and how to deliver the published information.</li>
+  <li>The information itself is neither distributed nor stored by the Controller.</li>
 </ul>
-<p id="rfc.section.3.1.4.p.4">The information itself is neither distributed nor stored by the Controller.</p>
 <p/>
 
 <dl>
@@ -725,8 +738,8 @@ ul.toc a:first-child {
 <ul>
   <li>Receives a request for information from a Consumer, retrieves the information from the appropriate Providers, and provides the information to the Consumer.</li>
   <li>Receives a publication request from a Provider, accepts the published information, and distributes it to appropriate consumers.</li>
+  <li>The information itself is distributed by, but not stored by, the Controller.</li>
 </ul>
-<p id="rfc.section.3.1.4.p.7">The information itself is distributed by, but not stored by, the Controller.</p>
 <p/>
 
 <dl>
@@ -739,12 +752,12 @@ ul.toc a:first-child {
   <li>Receives a request for information from a Consumer, retrieves the information from its data stores, and provides the information to the Consumer.</li>
   <li>Receives a publication request from a provider, stores the published information, and distributes it to appropriate Consumers.</li>
 </ul>
-<p id="rfc.section.3.1.4.p.10">The information itself is both handled by and stored by the Controller.</p>
-<p id="rfc.section.3.1.4.p.11">A single instantiation of a Controller may be a Broker, Proxy, or Repository, or any combination thereof.</p>
-<p id="rfc.section.3.1.4.p.12">Through the use of a discovery mechanism, Consumers can have visibility into the Providers present, the type(s) of Posture Assessment Information available, and how it can be requested.  Similarly, a Provider may need to publish what Posture Assessment Information it can share and how it can share it (e.g. protocol, filtering capabilities, etc.). Enabling this visibility through a Controller or through metadata publication also allows for the distinct definition of security considerations (e.g. authorized registration / publication of capabilities by Providers) beyond how a Provider may define its own capability.</p>
-<p id="rfc.section.3.1.4.p.13">Beyond the control and management functions for the SACM system, a Controller may also provide proxy or broker or repository (and possibly routing) services in the data plane.  In the deployment scenario where Providers do not assert the need to know their Consumers and/or vice versa, the Controller can thus provide the appropriate services to ensure the Posture Assessment Information is appropriately communicated from the Providers to the authorized Consumers.</p>
-<p id="rfc.section.3.1.4.p.14">The Controller, acting as a management control plane, helps define how to manage an overall SACM system that allows for Consumers to obtain the desired Posture Assessment Information without the need to distinctly know and establish one (Consumer) to many (Provider) connections.  Similarly, a Provider may not need to distinctly know and establish one (Provider) to many (Consumer) connections; e.g. the Controller enables the means to allow a SACM system to support many to many connections. Note that the Controller also allows for the direct discovery and connection between a Consumer and Provider.</p>
-<p id="rfc.section.3.1.4.p.15">As a SACM component, the Controller may be instantiated within a system or device acting as a Provider or a Consumer (or both), or as its own distinct Controller entity.  In a rich SACM environment, it is feasible to instantiate a Controller that provides both the management (and control) functions for SACM as well as providing the data plane services for the actual data, e.g. Posture Assessment Information flow. Note that Controllers may be implemented to only provide control plane functions (broker), or both control plane functions and data plane services (proxy or repository).</p>
+<p id="rfc.section.3.1.4.p.8">The information itself is both handled by and stored by the Controller.</p>
+<p id="rfc.section.3.1.4.p.9">A single instantiation of a Controller may be a Broker, Proxy, or Repository, or any combination thereof.</p>
+<p id="rfc.section.3.1.4.p.10">Through the use of a discovery mechanism, Consumers can have visibility into the Providers present, the type(s) of Posture Assessment Information available, and how it can be requested.  Similarly, a Provider may need to publish what Posture Assessment Information it can share and how it can share it (e.g. protocol, filtering capabilities, etc.). Enabling this visibility through a Controller or through metadata publication also allows for the distinct definition of security considerations (e.g. authorized registration / publication of capabilities by Providers) beyond how a Provider may define its own capability.</p>
+<p id="rfc.section.3.1.4.p.11">Beyond the control and management functions for the SACM system, a Controller may also provide proxy or broker or repository (and possibly routing) services in the data plane.  In the deployment scenario where Providers do not assert the need to know their Consumers and/or vice versa, the Controller can thus provide the appropriate services to ensure the Posture Assessment Information is appropriately communicated from the Providers to the authorized Consumers.</p>
+<p id="rfc.section.3.1.4.p.12">The Controller, acting as a management control plane, helps define how to manage an overall SACM system that allows for Consumers to obtain the desired Posture Assessment Information without the need to distinctly know and establish one (Consumer) to many (Provider) connections.  Similarly, a Provider may not need to distinctly know and establish one (Provider) to many (Consumer) connections; e.g. the Controller enables the means to allow a SACM system to support many to many connections. Note that the Controller also allows for the direct discovery and connection between a Consumer and Provider.</p>
+<p id="rfc.section.3.1.4.p.13">As a SACM component, the Controller may be instantiated within a system or device acting as a Provider or a Consumer (or both), or as its own distinct Controller entity.  In a rich SACM environment, it is feasible to instantiate a Controller that provides both the management (and control) functions for SACM as well as providing the data plane services for the actual data, e.g. Posture Assessment Information flow. Note that Controllers may be implemented to only provide control plane functions (broker), or both control plane functions and data plane services (proxy or repository).</p>
 <h1 id="rfc.section.4"><a href="#rfc.section.4">4.</a> <a href="#interfaces" id="interfaces">Interfaces between Consumers, Providers, and Controllers</a></h1>
 <p id="rfc.section.4.p.1">A SACM interface is a transport carrying operations (e.g. publication via a RESTful API).  As shown in <a href="#simple-architectural-model">Figure 1</a>, communication can proceed with the following interfaces and expected functions and behaviors:</p>
 <p/>
@@ -767,7 +780,7 @@ ul.toc a:first-child {
 
 <dl>
   <dt>Authentication:</dt>
-  <dd style="margin-left: 1">The authentication of Consumers and Providers independent of the actual information-sharing communication channel. This supports use cases where:</dd>
+  <dd style="margin-left: 1">The authentication of Consumers and Providers independent of the actual information-sharing communication channel. While authentication between peers (e.g. a Consumer and a Provider) can be achieved directly through peer to peer authentication (using TLS for instance), there are use cases where:</dd>
 </dl>
 <p/>
 
@@ -775,26 +788,33 @@ ul.toc a:first-child {
   <li>Consumers may request information independent of knowing the identities of the Providers.</li>
   <li>Providers may want to share the information without prior solicitation.</li>
 </ul>
-<p id="rfc.section.5.1.p.4">The architecture must account for an abstraction where a Controller may be defined to effect the authentication of the Consumers and Providers independent of the actual information-sharing communication channel.</p>
+<p id="rfc.section.5.1.p.4">To address the above use cases, the architecture must account for an abstraction where a Controller may be defined to effect the authentication of the Consumers and Providers independent of the actual information-sharing communication channel.  Consumers and Providers that consume or publish information without requiring knowledge of the Providers and Consumers respectively would function in a SACM system where the Controller is a distinct entity.  As a distinct SACM component, the Controller would authenticate Providers and Consumers.</p>
 <p/>
 
 <dl>
   <dt>Authorization:</dt>
-  <dd style="margin-left: 1">The restriction of Posture Assessment Information sharing between the Consumers and Providers. At minimum, a management function must define the necessary policies.</dd>
+  <dd style="margin-left: 1">The restriction of Posture Assessment Information sharing between the Consumers and Providers.  At minimum, a management function must define the necessary policies to control what Providers can publish and Consumers to accept.  The Controller is the authority for the type of Posture Information that a Provider can publish and a Consumer can accept.  If a Controller is a Broker, then it may only grant authorization to the capabilities requested by the Provider or Consumer.  When acting as a Proxy, as part of its authorization, the Controller may further obscure or block information being shared by a Provider as it distributes it to a Consumer.  Similarly, a Repository may block information as recieved by the Provider and pass to the Consumer and to its storage the resulting authorized information.  A Provider may also enforce its own authorization based upon its connection to a Controller; though, in the case where an application includes both the Provider and Controller roles, it can choose to implement all authorization on the Controller.  Similarly, a Consumer may enforce its own authorization of what data it can receive based on the Controller (or Provider) it is communicaticating with; in the case where an application includes both the Consumer and Controller roles, it can choose to implement all the authorization on the Controller.</dd>
   <dt>Identity Management:</dt>
   <dd style="margin-left: 1">Since Identity Management for authentication and authorization policies is best performed via a centralized component, the Controller also facilitates this function.</dd>
+  <dt></dt>
+  <dd style="margin-left: 1">The Controller needs to be able to identify the endpoints participating as SACM components and the roles that they play.  Similar to how access control may be effected via Authentication, Authorization, and Accounting Systems (e.g.  AAA services), the same principle is defined; as AAA services depend on Identity Management services, the Controller will need a similar function and interface to Identity Management services.  Note that implementations of this function is abstractly centralized, but to address scalability and the need to manage different resources (e.g. users, processes and devices) a distributed system that is centrally coordinated may be used.</dd>
+  <dt>Registration/Discovery:</dt>
+  <dd style="margin-left: 1">A SACM ecosystem needs to provide the ability for devices to discover Providers, Consumers, Controllers and their respective capabilities.  For a Consumer to be able to obtain the information of interest must either configure itself to know what Providers to communicate with directly (and their known capabilities, such as the supported data model and information provided) or can dynamically discover the information that is available.  Similarly, Providers may need to either be configured to know who to publish the information to, or can dynamically discover its Consumers.</dd>
+  <dt></dt>
+  <dd style="margin-left: 1">In the case where there is a Controller, the capabilities of the Controller must also be advertised so that Providers and Consumers may know how the data is being handled as well (e.g. if acting as a Broker or Repository).  The Controller also provides the function of registering the Providers and Consumers; the registration function enables the Controller to also affect the authorization afforded to the Provider or Consumer.</dd>
 </dl>
-<p id="rfc.section.5.1.p.6">The Controller needs to be able to identify the endpoints participating as SACM components and the roles that they play.  Similar to how access control may be effected via Authentication, Authorization, and Accounting Systems (e.g. AAA services), the same principle is defined; as AAA services depend on Identity Management services, the Controller will need a similar function and interface to Identity Management services.</p>
+<h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#data-plane-functions" id="data-plane-functions">Data Plane Functions</a></h1>
+<p id="rfc.section.5.2.p.1">There are three basic functions to facilitate data flow:</p>
 <p/>
 
 <dl>
-  <dt>Registration/Discovery:</dt>
-  <dd style="margin-left: 1">The discovery of what Providers are available, what information a Provider can share, and how it can be requested / communicated.  A discovery mechanism is required to facilitate interaction with Providers that may have different Posture Assessment Information and potentially limited, or a rich set of, ways in which they can share the information.</dd>
+  <dt>Subscription:</dt>
+  <dd style="margin-left: 1">A Consumer that wants to recieve information from a specific Provider or from the Controller advertising the availability of specific information (that may come from more than one Provider) will effectively subscribe to recieve the information spontaneously and continuously as new information as subscribed to becomes available.</dd>
+  <dt>Publication:</dt>
+  <dd style="margin-left: 1">A Provider being registered through the Controller to provide specific information, may publish the information either directly to the Consumers or to the Controller that is acting as the broker or respository.</dd>
+  <dt>Query/Response:</dt>
+  <dd style="margin-left: 1">A Consumer may contact the Provider directly and request the information through a query operation; and in response, the Provider would send the information directly to the Consumer.</dd>
 </dl>
-<h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> <a href="#data-plane-functions" id="data-plane-functions">Data Plane Functions</a></h1>
-<p id="rfc.section.5.2.p.1">Subscription</p>
-<p id="rfc.section.5.2.p.2">Publication</p>
-<p id="rfc.section.5.2.p.3">Query</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#capabilities" id="capabilities">Component Capabilities</a></h1>
 <p id="rfc.section.6.p.1">TODO: add a discussion of &#8220;capability&#8221; as being able to talk a specific data model, data operations, or SACM transport</p>
 <p id="rfc.section.6.p.2">TODO: data plane capabilities / control plane capabilities can be discovered via querying the controller</p>
@@ -817,7 +837,7 @@ ul.toc a:first-child {
  +------------------------+           +------------------------+
  | +----------------------+     A     | +------------------------+
  | |                      |===========| |                        |
- | |    Consumer (C)      |-----------| |      Provider (P)      |
+ | |    Consumer (Cs)     |-----------| |      Provider (Pr)     |
  +-|                      |     C     +-|                        |
     +---------------------+             +------------------------+
 
@@ -909,7 +929,7 @@ ul.toc a:first-child {
       <td class="reference">
         <b id="I-D.ietf-sacm-terminology">[I-D.ietf-sacm-terminology]</b>
       </td>
-      <td class="top"><a>Birkholz, H.</a>, "<a href="http://tools.ietf.org/html/draft-ietf-sacm-terminology-07">Secure Automation and Continuous Monitoring (SACM) Terminology</a>", Internet-Draft draft-ietf-sacm-terminology-07, July 2015.</td>
+      <td class="top"><a>Birkholz, H.</a>, "<a href="http://tools.ietf.org/html/draft-ietf-sacm-terminology-08">Secure Automation and Continuous Monitoring (SACM) Terminology</a>", Internet-Draft draft-ietf-sacm-terminology-08, October 2015.</td>
     </tr>
     <tr>
       <td class="reference">

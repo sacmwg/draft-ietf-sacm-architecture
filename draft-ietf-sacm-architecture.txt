@@ -5,12 +5,12 @@
 SACM                                                  N. Cam-Winget, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                               L. Lorenzin
-Expires: January 2, 2016                                    Pulse Secure
+Expires: April 19, 2016                                     Pulse Secure
                                                              I. McDonald
                                                           High North Inc
                                                                A. Woland
                                                            Cisco Systems
-                                                               July 2015
+                                                        October 17, 2015
 
 
     Secure Automation and Continuous Monitoring (SACM) Architecture
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 2, 2016.
+   This Internet-Draft will expire on April 19, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016                [Page 1]
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 1]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    publication of this document.  Please review these documents
@@ -68,30 +68,31 @@ Internet-Draft              SACM Architecture                  July 2015
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
    2.  Problem Statement . . . . . . . . . . . . . . . . . . . . . .   3
    3.  Architectural Overview  . . . . . . . . . . . . . . . . . . .   3
      3.1.  Component Roles . . . . . . . . . . . . . . . . . . . . .   5
        3.1.1.  Provider  . . . . . . . . . . . . . . . . . . . . . .   6
-       3.1.2.  Consumer  . . . . . . . . . . . . . . . . . . . . . .   6
-       3.1.3.  Types of Providers and Controllers  . . . . . . . . .   7
-         3.1.3.1.  Collector . . . . . . . . . . . . . . . . . . . .   7
-         3.1.3.2.  Evaluator . . . . . . . . . . . . . . . . . . . .   8
+       3.1.2.  Consumer  . . . . . . . . . . . . . . . . . . . . . .   7
+       3.1.3.  Types of Providers and Controllers  . . . . . . . . .   8
+         3.1.3.1.  Collector . . . . . . . . . . . . . . . . . . . .   8
+         3.1.3.2.  Evaluator . . . . . . . . . . . . . . . . . . . .   9
          3.1.3.3.  Report Generator  . . . . . . . . . . . . . . . .   9
          3.1.3.4.  Data Store  . . . . . . . . . . . . . . . . . . .   9
        3.1.4.  Controller  . . . . . . . . . . . . . . . . . . . . .   9
    4.  Interfaces between Consumers, Providers, and Controllers  . .  11
    5.  Component Functions . . . . . . . . . . . . . . . . . . . . .  12
      5.1.  Control Plane Functions . . . . . . . . . . . . . . . . .  12
-     5.2.  Data Plane Functions  . . . . . . . . . . . . . . . . . .  13
-   6.  Component Capabilities  . . . . . . . . . . . . . . . . . . .  13
-   7.  Example Illustration of Functions and Workflow  . . . . . . .  13
-   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  17
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
-   10. Security Considerations . . . . . . . . . . . . . . . . . . .  17
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  18
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .  18
-     11.2.  Informative References . . . . . . . . . . . . . . . . .  18
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  18
+     5.2.  Data Plane Functions  . . . . . . . . . . . . . . . . . .  14
+   6.  Component Capabilities  . . . . . . . . . . . . . . . . . . .  15
+   7.  Example Illustration of Functions and Workflow  . . . . . . .  15
+   8.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .  18
+   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  18
+   10. Security Considerations . . . . . . . . . . . . . . . . . . .  18
+   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .  19
+     11.1.  Normative References . . . . . . . . . . . . . . . . . .  19
+     11.2.  Informative References . . . . . . . . . . . . . . . . .  19
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
 
 1.  Introduction
 
@@ -108,10 +109,9 @@ Table of Contents
 
 
 
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 2]
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 2]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    This document addresses general and architectural requirements
@@ -124,6 +124,15 @@ Internet-Draft              SACM Architecture                  July 2015
 
    This document uses terminology defined in
    [I-D.ietf-sacm-terminology].
+
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
+   When the words appear in lower case, their natural language meaning
+   is used.
 
 2.  Problem Statement
 
@@ -140,7 +149,7 @@ Internet-Draft              SACM Architecture                  July 2015
 
    Security automation and continuous monitoring require a large and
    broad set of mission and business processes; to make the most
-   effective of use of technology, the same data must support multiple
+   effective use of technology, the same data must support multiple
    processes.  The need for complex characterization and assessment
    necessitates components and functions that interoperate and can build
    off each other to enable far-ranging and/or deep-diving analysis.
@@ -153,29 +162,32 @@ Internet-Draft              SACM Architecture                  July 2015
    At a high level, the SACM architecture describes "Where" and "How"
    information and assessment of posture may be collected, processed
    (e.g. normalization, translation, aggregation, etc.), assessed,
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 3]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
    exchanged, and/or stored.  This section provides an architectural
-   overview of 1.) the basic architectural building blocks, which - in
-   combination - constitute SACM components (the entities, the "where"),
-   and 2.) the relationships and interaction between these building
-   blocks on the data plane and control plane (communications and flows
-   between entities, the "how").
+   overview of
+
+   o  the basic architectural building blocks, which - in combination -
+      constitute SACM components (the entities, the "where"), and
+
+   o  the relationships and interaction between these building blocks on
+      the data plane and control plane (communications and flows between
+      entities, the "how").
 
    The SACM architecture provides the basic means to describe and
    compose SACM components.  Components enable the basic functionality
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 3]
-
-Internet-Draft              SACM Architecture                  July 2015
-
-
    in SACM, such as Endpoint Attribute Collection or Target Endpoint
    Posture Assessment.
 
    The role(s) a component plays in the SACM architecture are determined
    by the function(s) that component instantiates.  Three main component
-   roles are defined: a Consumer (C), a Provider (P), and a Controller
+   roles are defined: a Consumer (Cs), a Provider (Pr), and a Controller
    (Cr) used to facilitate some of the security functions such as
    authentication and authorization and other metadata functions.  See
    Section 3.1 for details on roles.
@@ -209,28 +221,16 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 4]
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 4]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
                          +--------------------------------------+
                          | +--------------------------------------+
                          | | +--------------------------------------+
                          | | |                                      |
-                         +-| |            Consumer (C)              |
+                         +-| |            Consumer (Cs)             |
                            +-|                                      |
                              +--------------------------------------+
                                /   \         /   \            /   \
@@ -257,7 +257,7 @@ Internet-Draft              SACM Architecture                  July 2015
                                \   /         \   /            \   /
                              +------------------------------------+
                              |                                    |-+
-                             |            Provider (P)            | |
+                             |            Provider (Pr)           | |
                              |                                    | |-+
                              +------------------------------------+ | |
                                +------------------------------------+ |
@@ -277,9 +277,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016                [Page 5]
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 5]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    individual endpoints may be a target endpoint, a component, or both
@@ -289,9 +289,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
 3.1.1.  Provider
 
-   The Provider (P or Provider) is the component that contributes
-   Posture Assessment Information and/or Guidance either spontaneously
-   or in response to a request.  A Provider can be a Posture Evaluator,
+   The Provider (Pr) is the component that contributes Posture
+   Assessment Information and/or Guidance either spontaneously or in
+   response to a request.  A Provider can be a Posture Evaluator,
    Posture Collector, Data Store (see Section 3.1.3), or an application
    that has aggregated Posture Assessment Information that can be
    shared.
@@ -299,13 +299,26 @@ Internet-Draft              SACM Architecture                  July 2015
    The Provider implements the capabilities and functions that must be
    handled to share or provide Posture Assessment information.
 
-   A Provider may provide information spontaneously, or in response to a
-   direct request from a Consumer.  The information may be filtered or
-   truncated to provide a subset of the requested information to honor
-   the request.  This truncation may be performed based on the
-   Consumer's request and/or the Provider's ability to filter.  The
-   latter case may be due to security considerations (e.g. authorization
-   restrictions due to domain segregation, privacy, etc.).
+   One means by which a Provider shares information, is in response to a
+   direct request from a Consumer.
+
+   A Provider may also share information spontaneously.  Use cases such
+   as the change in a posture state require that a Provider be able to
+   provide such changes or updates especially to Consumers such as
+   Security Information and Event Management (SIEM) systems; similarly,
+   SIEM applications that are providing live information require any
+   such updates or changes to posture information to be provided
+   spontaneously.  Authorization for the enabling for these unsolicited
+   messages happens through the Controller at the time that both
+   Provider and Consumers request authorization for (spontaneous)
+   messages.
+
+   The information provided, may be filtered or truncated to provide a
+   subset of the requested information to honor the request.  This
+   truncation may be performed based on the Consumer's request and/or
+   the Provider's ability to filter.  The latter case may be due to
+   security considerations (e.g. authorization restrictions due to
+   domain segregation, privacy, etc.).
 
    The Provider may only be able to share the Posture Assessment
    Information using a specific data model and protocol.  It may use a
@@ -317,26 +330,24 @@ Internet-Draft              SACM Architecture                  July 2015
    the data model itself, or through the use of the registration
    function of the Controller (see Section 3.1.4).
 
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 6]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
    The Provider must be authorized to provide the Posture Assessment
-   Information and further, be authorized to do so with specific data
-   models and protocols and/or for specific consumers.
+   Information for specific consumers.
 
 3.1.2.  Consumer
 
-   The Consumer (C or Consumer) is the component that requests or
-   accepts Posture Assessment Information and/or Guidance.  A Consumer
-   can be a Posture Evaluator, Report Generator, Data Store (see
-   Section 5.2), or an application that consumes Posture Assessment
-   Information in order to perform another function.
-
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 6]
-
-Internet-Draft              SACM Architecture                  July 2015
-
+   The Consumer (Cs) is the component that requests or accepts Posture
+   Assessment Information and/or Guidance.  A Consumer can be a Posture
+   Evaluator, Report Generator, Data Store (see Section 5.2), or an
+   application that consumes Posture Assessment Information in order to
+   perform another function.
 
    As described in Section 2.2 of the SACM Use Cases
    [I-D.ietf-sacm-use-cases], several usage scenarios are posed with
@@ -372,6 +383,17 @@ Internet-Draft              SACM Architecture                  July 2015
    to limits or constraints on the numbers, types, sizes, and rate of
    requests.
 
+
+
+
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 7]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
 3.1.3.  Types of Providers and Controllers
 
    SACM Providers and Consumers can perform a variety of SACM-related
@@ -384,15 +406,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
    A collector consumes Guidance and/or other Posture Assessment
    Information; it provides Posture Assessment Information.  Collectors
-   may be internal or external.
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 7]
-
-Internet-Draft              SACM Architecture                  July 2015
-
+   may be internal or external.  As a SACM component, a Collector may be
+   a Consumer as it may consume guidance information and may also be a
+   Provider as it may publish the collected information.
 
 3.1.3.1.1.  Internal Collector
 
@@ -426,6 +442,14 @@ Internet-Draft              SACM Architecture                  July 2015
    o  A hypervisor, which collects information about endpoints running
       as virtual guests in its host environment
 
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 8]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
    o  A management system that configures and installs software on the
       endpoint, which collects information based on its provisioning
       activities
@@ -441,15 +465,6 @@ Internet-Draft              SACM Architecture                  July 2015
    An evaluator consumes Posture Assessment Information, Evaluation
    Results, and/or Guidance; it provides Evaluation Results.  An
    evaluator may consume endpoint attribute assertions, previous
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 8]
-
-Internet-Draft              SACM Architecture                  July 2015
-
-
    evaluations of posture attributes, or previous reports of Evaluation
    Results.
 
@@ -478,9 +493,23 @@ Internet-Draft              SACM Architecture                  July 2015
 3.1.4.  Controller
 
    The Controller (Cr or Controller) is a component defined to
-   facilitate information sharing and to execute on security functions
-   and overall SACM management and control system functions.  SACM
-   defines three types of Controller:
+   facilitate the overall SACM management and control system functions.
+   This component is responsible for handling the secure communications
+   establishment (such as the authentication and authorization) between
+   Providers and Consumers.  In addition, the Controller may also handle
+   how the data may be routed.  While the architecture defines the
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                 [Page 9]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
+   Controller as a single component, implementations may implement this
+   to suit the different deployment and scaling requirements.  In
+   particular, for the data handling, SACM defines three types of
+   Controller:
 
    Broker:  Intermediary negotiating connection between Provider and
     Consumer.  Implements only control plane functions.  A Controller
@@ -492,19 +521,12 @@ Internet-Draft              SACM Architecture                  July 2015
    o  Receives a publication request from a Provider and instructs the
       Provider where and how to deliver the published information.
 
-   The information itself is neither distributed nor stored by the
-   Controller.
+   o  The information itself is neither distributed nor stored by the
+      Controller.
 
    Proxy:  Intermediary negotiating on behalf of a Consumer or Provider.
     Implements both control and data plane functions.  A Controller
     acting as a Proxy:
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016                [Page 9]
-
-Internet-Draft              SACM Architecture                  July 2015
-
 
    o  Receives a request for information from a Consumer, retrieves the
       information from the appropriate Providers, and provides the
@@ -514,8 +536,8 @@ Internet-Draft              SACM Architecture                  July 2015
       published information, and distributes it to appropriate
       consumers.
 
-   The information itself is distributed by, but not stored by, the
-   Controller.
+   o  The information itself is distributed by, but not stored by, the
+      Controller.
 
    Repository:  Intermediary receiving and storing data from a Provider,
     and providing stored data to a Consumer.  Implements both control
@@ -531,6 +553,14 @@ Internet-Draft              SACM Architecture                  July 2015
 
    The information itself is both handled by and stored by the
    Controller.
+
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                [Page 10]
+
+Internet-Draft              SACM Architecture               October 2015
+
 
    A single instantiation of a Controller may be a Broker, Proxy, or
    Repository, or any combination thereof.
@@ -554,13 +584,6 @@ Internet-Draft              SACM Architecture                  July 2015
    appropriate services to ensure the Posture Assessment Information is
    appropriately communicated from the Providers to the authorized
    Consumers.
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016               [Page 10]
-
-Internet-Draft              SACM Architecture                  July 2015
-
 
    The Controller, acting as a management control plane, helps define
    how to manage an overall SACM system that allows for Consumers to
@@ -588,6 +611,13 @@ Internet-Draft              SACM Architecture                  July 2015
    via a RESTful API).  As shown in Figure 1, communication can proceed
    with the following interfaces and expected functions and behaviors:
 
+
+
+Cam-Winget, et al.       Expires April 19, 2016                [Page 11]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
    A:  interface "A" shown in Figure 1 handles the management and
     control functions that are needed to establish, at minimum, a secure
     communication between Consumers and Providers.  The interface must
@@ -610,14 +640,6 @@ Internet-Draft              SACM Architecture                  July 2015
     authorization mechanisms have been employed to establish a secure
     communication link between the Consumer and the Provider.
     Typically, it is expected that the secure link establishment occurs
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016               [Page 11]
-
-Internet-Draft              SACM Architecture                  July 2015
-
-
     as a management or control function through the abstracted
     Controller role (e.g. the Controller could be a broker or could be
     embedded in a Consumer or a Provider).
@@ -643,12 +665,23 @@ Internet-Draft              SACM Architecture                  July 2015
 
    Control plane functions represent various services offered by the
    Controller to the Providers and Consumers to facilitate sharing of
+
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                [Page 12]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
    information.  Control plane functions include, but are not limited
    to:
 
    Authentication:  The authentication of Consumers and Providers
     independent of the actual information-sharing communication channel.
-    This supports use cases where:
+    While authentication between peers (e.g. a Consumer and a Provider)
+    can be achieved directly through peer to peer authentication (using
+    TLS for instance), there are use cases where:
 
    o  Consumers may request information independent of knowing the
       identities of the Providers.
@@ -656,50 +689,109 @@ Internet-Draft              SACM Architecture                  July 2015
    o  Providers may want to share the information without prior
       solicitation.
 
-   The architecture must account for an abstraction where a Controller
-   may be defined to effect the authentication of the Consumers and
-   Providers independent of the actual information-sharing communication
-   channel.
+   To address the above use cases, the architecture must account for an
+   abstraction where a Controller may be defined to effect the
+   authentication of the Consumers and Providers independent of the
+   actual information-sharing communication channel.  Consumers and
+   Providers that consume or publish information without requiring
+   knowledge of the Providers and Consumers respectively would function
+   in a SACM system where the Controller is a distinct entity.  As a
+   distinct SACM component, the Controller would authenticate Providers
+   and Consumers.
 
    Authorization:  The restriction of Posture Assessment Information
     sharing between the Consumers and Providers.  At minimum, a
-    management function must define the necessary policies.
+    management function must define the necessary policies to control
+    what Providers can publish and Consumers to accept.  The Controller
+    is the authority for the type of Posture Information that a Provider
+    can publish and a Consumer can accept.  If a Controller is a Broker,
+    then it may only grant authorization to the capabilities requested
+    by the Provider or Consumer.  When acting as a Proxy, as part of its
+    authorization, the Controller may further obscure or block
+    information being shared by a Provider as it distributes it to a
+    Consumer.  Similarly, a Repository may block information as recieved
+    by the Provider and pass to the Consumer and to its storage the
+    resulting authorized information.  A Provider may also enforce its
+    own authorization based upon its connection to a Controller; though,
+    in the case where an application includes both the Provider and
+    Controller roles, it can choose to implement all authorization on
+    the Controller.  Similarly, a Consumer may enforce its own
+    authorization of what data it can receive based on the Controller
+    (or Provider) it is communicaticating with; in the case where an
+    application includes both the Consumer and Controller roles, it can
+    choose to implement all the authorization on the Controller.
 
 
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016               [Page 12]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 13]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    Identity Management:  Since Identity Management for authentication
     and authorization policies is best performed via a centralized
     component, the Controller also facilitates this function.
 
-   The Controller needs to be able to identify the endpoints
-   participating as SACM components and the roles that they play.
-   Similar to how access control may be effected via Authentication,
-   Authorization, and Accounting Systems (e.g.  AAA services), the same
-   principle is defined; as AAA services depend on Identity Management
-   services, the Controller will need a similar function and interface
-   to Identity Management services.
+    The Controller needs to be able to identify the endpoints
+    participating as SACM components and the roles that they play.
+    Similar to how access control may be effected via Authentication,
+    Authorization, and Accounting Systems (e.g.  AAA services), the same
+    principle is defined; as AAA services depend on Identity Management
+    services, the Controller will need a similar function and interface
+    to Identity Management services.  Note that implementations of this
+    function is abstractly centralized, but to address scalability and
+    the need to manage different resources (e.g. users, processes and
+    devices) a distributed system that is centrally coordinated may be
+    used.
 
-   Registration/Discovery:  The discovery of what Providers are
-    available, what information a Provider can share, and how it can be
-    requested / communicated.  A discovery mechanism is required to
-    facilitate interaction with Providers that may have different
-    Posture Assessment Information and potentially limited, or a rich
-    set of, ways in which they can share the information.
+   Registration/Discovery:  A SACM ecosystem needs to provide the
+    ability for devices to discover Providers, Consumers, Controllers
+    and their respective capabilities.  For a Consumer to be able to
+    obtain the information of interest must either configure itself to
+    know what Providers to communicate with directly (and their known
+    capabilities, such as the supported data model and information
+    provided) or can dynamically discover the information that is
+    available.  Similarly, Providers may need to either be configured to
+    know who to publish the information to, or can dynamically discover
+    its Consumers.
+
+    In the case where there is a Controller, the capabilities of the
+    Controller must also be advertised so that Providers and Consumers
+    may know how the data is being handled as well (e.g. if acting as a
+    Broker or Repository).  The Controller also provides the function of
+    registering the Providers and Consumers; the registration function
+    enables the Controller to also affect the authorization afforded to
+    the Provider or Consumer.
 
 5.2.  Data Plane Functions
 
-   Subscription
+   There are three basic functions to facilitate data flow:
 
-   Publication
+   Subscription:  A Consumer that wants to recieve information from a
+    specific Provider or from the Controller advertising the
+    availability of specific information (that may come from more than
+    one Provider) will effectively subscribe to recieve the information
+    spontaneously and continuously as new information as subscribed to
+    becomes available.
 
-   Query
+   Publication:  A Provider being registered through the Controller to
+    provide specific information, may publish the information either
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                [Page 14]
+
+Internet-Draft              SACM Architecture               October 2015
+
+
+    directly to the Consumers or to the Controller that is acting as the
+    broker or respository.
+
+   Query/Response:  A Consumer may contact the Provider directly and
+    request the information through a query operation; and in response,
+    the Provider would send the information directly to the Consumer.
 
 6.  Component Capabilities
 
@@ -715,21 +807,6 @@ Internet-Draft              SACM Architecture                  July 2015
    sections, revise all this text based upon the agreed-upon
    architecture
 
-
-
-
-
-
-
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016               [Page 13]
-
-Internet-Draft              SACM Architecture                  July 2015
-
-
                       +-------------------------------+
                      | +-------------------------------+
                      | |                               |
@@ -744,7 +821,7 @@ Internet-Draft              SACM Architecture                  July 2015
     +------------------------+           +------------------------+
     | +----------------------+     A     | +------------------------+
     | |                      |===========| |                        |
-    | |    Consumer (C)      |-----------| |      Provider (P)      |
+    | |    Consumer (Cs)     |-----------| |      Provider (Pr)     |
     +-|                      |     C     +-|                        |
        +---------------------+             +------------------------+
 
@@ -755,6 +832,15 @@ Internet-Draft              SACM Architecture                  July 2015
    update of system security configurations pertaining to endpoint
    assessment.  In order to carry out these tasks, the architectural
    components shown in Figure 1 can be further refined as:
+
+
+
+
+
+Cam-Winget, et al.       Expires April 19, 2016                [Page 15]
+
+Internet-Draft              SACM Architecture               October 2015
+
 
    Providers:  a Provider may be dedicated to perform either the
     collection, aggregation or evaluation of one or more posture
@@ -777,15 +863,6 @@ Internet-Draft              SACM Architecture                  July 2015
     one or more posture attributes or assessments for endpoints.  It
     should be understood that these repositories interface directly to a
     Provider or Consumer (and Guidance) but the interfaces used to
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016               [Page 14]
-
-Internet-Draft              SACM Architecture                  July 2015
-
-
     interact between them is outside the scope of SACM (e.g. no
     interface arrows are shown in the architecture).
 
@@ -816,30 +893,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Cam-Winget, et al.       Expires January 2, 2016               [Page 15]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 16]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
                                    +-------------+
@@ -893,9 +949,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016               [Page 16]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 17]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    TODO - add example of / more content around interactions with
@@ -949,9 +1005,9 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016               [Page 17]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 18]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    there may be other devices, modules or components in the path between
@@ -969,8 +1025,8 @@ Internet-Draft              SACM Architecture                  July 2015
 
    [I-D.ietf-sacm-terminology]
               Birkholz, H., "Secure Automation and Continuous Monitoring
-              (SACM) Terminology", draft-ietf-sacm-terminology-07 (work
-              in progress), July 2015.
+              (SACM) Terminology", draft-ietf-sacm-terminology-08 (work
+              in progress), October 2015.
 
    [I-D.ietf-sacm-use-cases]
               Waltermire, D. and D. Harrington, "Endpoint Security
@@ -1005,9 +1061,9 @@ Authors' Addresses
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016               [Page 18]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 19]
 
-Internet-Draft              SACM Architecture                  July 2015
+Internet-Draft              SACM Architecture               October 2015
 
 
    Nancy Cam-Winget (editor)
@@ -1061,4 +1117,4 @@ Internet-Draft              SACM Architecture                  July 2015
 
 
 
-Cam-Winget, et al.       Expires January 2, 2016               [Page 19]
+Cam-Winget, et al.       Expires April 19, 2016                [Page 20]
