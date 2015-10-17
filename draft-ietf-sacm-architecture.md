@@ -16,7 +16,6 @@ abbrev: SACM Architecture
 area: Security
 wg: SACM
 kw: template
-date: 2015-07
 author:
 - role: editor
   ins: N. Cam-Winget
@@ -97,6 +96,11 @@ needed for communication.
 
 This document uses terminology defined in {{I-D.ietf-sacm-terminology}}.
 
+##  Requirements Language	 		
+		 		
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119].	 		
+
+When the words appear in lower case, their natural language meaning is used.
 
 # Problem Statement {#problem-statement}
 
@@ -116,7 +120,7 @@ each administrator, not shared.
 
 Security automation and continuous monitoring require a large and broad set
 of mission and business
-processes; to make the most effective of use of technology, the same data
+processes; to make the most effective use of technology, the same data
 must support multiple processes.
 The need for complex characterization and assessment necessitates components
 and functions that
@@ -131,9 +135,13 @@ to use data from others interoperably.
 At a high level, the SACM architecture describes "Where" and "How" information
 and assessment of posture may be collected, processed (e.g. normalization,
 translation, aggregation, etc.), assessed, exchanged, and/or stored. This
-section provides an architectural overview of 1.) the basic architectural
+section provides an architectural overview of
+
+* the basic architectural
 building blocks, which – in combination – constitute SACM components (the
-entities, the "where"), and 2.) the relationships and interaction between
+entities, the "where"), and
+
+* the relationships and interaction between
 these building blocks on the data plane and control plane (communications
 and flows between entities, the "how").
 
@@ -143,7 +151,7 @@ Attribute Collection or Target Endpoint Posture Assessment.
 
 The role(s) a component plays in the SACM architecture are determined by
 the function(s) that component instantiates. Three main component roles are
-defined: a Consumer (C), a Provider (P), and a Controller (Cr) used to facilitate
+defined: a Consumer (Cs), a Provider (Pr), and a Controller (Cr) used to facilitate
 some of the security functions such as authentication and authorization and
 other metadata functions. See {{roles}} for details on roles.
 
@@ -165,42 +173,42 @@ an interface for data communication directly between a provider and a consumer
 
 
 ~~~~
-                       +--------------------------------------+
-                       | +--------------------------------------+
-                       | | +--------------------------------------+
-                       | | |                                      |
-                       +-| |            Consumer (C)              |
-                         +-|                                      |
-                           +--------------------------------------+
-                             /   \         /   \            /   \
-                            /     \       /     \          /     \
-                            -     -       -  d  -          -     -
-                             || ||A        | a  |B          |   |C
-                             || ||         | t  |           |   |
-                            -     -       -  a  -           |   |
-                            \     /       \     /           |   |
-                             \   /         \   /            |   |
-                          /|---------------------|\         |   |
-                   /|----/                         \--------| d |--|\
-                  /     /      Controller (Cr)      \ ctrl  | a |    \
-                  \     \                           / plane | t |    /
-                   \|----\                         /--------| a |--|/
-                          \|---------------------|/         |   |
-                             /   \         /   \            |   |
-                            /     \       /     \           |   |
-                            -     -       -  d  -           |   |
-                             || ||A        | a |B           |   |C
-                             || ||         | t |            |   |
-                            -     -       -  a  -          -     -
-                            \     /       \     /          \     /
-                             \   /         \   /            \   /
-                           +------------------------------------+
-                           |                                    |-+
-                           |            Provider (P)            | |
-                           |                                    | |-+
-                           +------------------------------------+ | |
-                             +------------------------------------+ |
-                               +------------------------------------+
+                      +--------------------------------------+
+                      | +--------------------------------------+
+                      | | +--------------------------------------+
+                      | | |                                      |
+                      +-| |            Consumer (Cs)             |
+                        +-|                                      |
+                          +--------------------------------------+
+                            /   \         /   \            /   \
+                           /     \       /     \          /     \
+                           -     -       -  d  -          -     -
+                            || ||A        | a  |B          |   |C
+                            || ||         | t  |           |   |
+                           -     -       -  a  -           |   |
+                           \     /       \     /           |   |
+                            \   /         \   /            |   |
+                         /|---------------------|\         |   |
+                  /|----/                         \--------| d |--|\
+                 /     /      Controller (Cr)      \ ctrl  | a |    \
+                 \     \                           / plane | t |    /
+                  \|----\                         /--------| a |--|/
+                         \|---------------------|/         |   |
+                            /   \         /   \            |   |
+                           /     \       /     \           |   |
+                           -     -       -  d  -           |   |
+                            || ||A        | a |B           |   |C
+                            || ||         | t |            |   |
+                           -     -       -  a  -          -     -
+                           \     /       \     /          \     /
+                            \   /         \   /            \   /
+                          +------------------------------------+
+                          |                                    |-+
+                          |            Provider (Pr)           | |
+                          |                                    | |-+
+                          +------------------------------------+ | |
+                            +------------------------------------+ |
+                              +------------------------------------+
 
 
 
@@ -220,7 +228,7 @@ Components can take on the role(s) of Provider, Consumer, and/or Controller.
 
 ### Provider {#provider}
 
-The Provider (P or Provider) is the component
+The Provider (Pr) is the component
 that
 contributes Posture Assessment Information and/or Guidance either spontaneously
 or
@@ -233,17 +241,25 @@ The Provider implements the capabilities and functions that must be handled
 to share or
 provide Posture Assessment information.
 
-A Provider may provide information spontaneously, or in response to a direct
-request
-from a Consumer. The information may be filtered or truncated to provide
-a subset of the
-requested information to honor the request. This truncation may be performed
-based on the
-Consumer’s request and/or the Provider’s ability to filter. The latter case
-may be due
-to security considerations (e.g. authorization restrictions due to domain
-segregation,
-privacy, etc.).
+One means by which a Provider shares information, is in response to a direct request from a Consumer.
+
+A Provider may also share information spontaneously.  Use cases such
+as the change in a posture state require that a Provider be able to
+provide such changes or updates especially to Consumers such as
+Security Information and Event Management (SIEM) systems; similarly,
+SIEM applications that are providing live information require any
+such updates or changes to posture information to be provided
+spontaneously.  Authorization for the enabling for these unsolicited
+messages happens through the Controller at the time that both
+Provider and Consumers request authorization for (spontaneous)
+messages.
+
+The information provided, may be filtered or truncated to provide a
+subset of the requested information to honor the request.  This
+truncation may be performed based on the Consumer's request and/or
+the Provider's ability to filter.  The latter case may be due to
+security considerations (e.g. authorization restrictions due to
+domain segregation, privacy, etc.).
 
 The Provider may only be able to share the Posture Assessment Information
 using a
@@ -260,15 +276,12 @@ the registration
 function of the Controller (see {{controller}}).
 
 The Provider must be authorized to provide the Posture Assessment Information
-and
-further, be authorized to do so with specific data models and protocols and/or
-for
-specific consumers.
+for specific consumers.
 
 
 ### Consumer {#requestor}
 
-The Consumer (C or Consumer) is the component
+The Consumer (Cs) is the component
 that
 requests or accepts Posture Assessment Information and/or Guidance. A Consumer
 can be
@@ -334,7 +347,9 @@ only one task, or multiple tasks. SACM defines the following types of Providers/
 
 A collector consumes Guidance and/or other Posture Assessment Information;
 it provides Posture Assessment Information. Collectors may be internal or
-external.
+external. As a SACM component, a Collector may be
+a Consumer as it may consume guidance information and may also be a
+Provider as it may publish the collected information.
 
 ##### Internal Collector {#internal-collector}
 
@@ -419,11 +434,16 @@ A data store consumes any data; it provides any data.
 
 ### Controller {#controller}
 
-The Controller (Cr or Controller) is a component defined to facilitate information
-sharing and
-to execute on security functions and overall SACM management and control
-system functions.  SACM defines three types of Controller:
-
+The Controller (Cr or Controller) is a component defined to
+facilitate the overall SACM management and control system functions.
+This component is responsible for handling the secure communications
+establishment (such as the authentication and authorization) between
+Providers and Consumers.  In addition, the Controller may also handle
+how the data may be routed.  While the architecture defines the
+Controller as a single component, implementations may implement this
+to suit the different deployment and scaling requirements.  In
+particular, for the data handling, SACM defines three types of
+Controller:
 
 
 {: hangIndent='1'}
@@ -440,9 +460,7 @@ retrieve the requested information.
 where and how to
 deliver the published information.
 
-
-
-The information itself is neither distributed nor stored by the Controller.
+  * The information itself is neither distributed nor stored by the Controller.
 
 
 
@@ -461,9 +479,7 @@ appropriate Providers, and provides the information to the Consumer.
 and
 distributes it to appropriate consumers.
 
-
-
-The information itself is distributed by, but not stored by, the Controller.
+  * The information itself is distributed by, but not stored by, the Controller.
 
 
 
@@ -615,9 +631,9 @@ include, but are not limited to:
 {: hangIndent='1'}
 Authentication:
 :   The authentication of Consumers and Providers
-independent of the actual information-sharing communication channel. This
-supports
-use cases where:
+independent of the actual information-sharing communication channel. While authentication between peers (e.g. a Consumer and a Provider)
+can be achieved directly through peer to peer authentication (using
+TLS for instance), there are use cases where:
 
   * Consumers may request information independent of knowing the identities of
 the
@@ -626,65 +642,111 @@ Providers.
   * Providers may want to share the information without prior solicitation.
 
 
-
-The architecture must account for an abstraction where a Controller may be
-defined
-to effect the authentication of the Consumers and Providers independent of
-the
-actual information-sharing communication channel.
+To address the above use cases, the architecture must account for an
+abstraction where a Controller may be defined to effect the
+authentication of the Consumers and Providers independent of the
+actual information-sharing communication channel.  Consumers and
+Providers that consume or publish information without requiring
+knowledge of the Providers and Consumers respectively would function
+in a SACM system where the Controller is a distinct entity.  As a
+distinct SACM component, the Controller would authenticate Providers
+and Consumers.
 
 
 
 {: hangIndent='1'}
 Authorization:
-:   The restriction of Posture Assessment Information sharing
-between the Consumers and Providers. At minimum, a management function must
-define
-the necessary policies.
+: The restriction of Posture Assessment Information
+sharing between the Consumers and Providers.  At minimum, a
+management function must define the necessary policies to control
+what Providers can publish and Consumers to accept.  The Controller
+is the authority for the type of Posture Information that a Provider
+can publish and a Consumer can accept.  If a Controller is a Broker,
+then it may only grant authorization to the capabilities requested
+by the Provider or Consumer.  When acting as a Proxy, as part of its
+authorization, the Controller may further obscure or block
+information being shared by a Provider as it distributes it to a
+Consumer.  Similarly, a Repository may block information as recieved
+by the Provider and pass to the Consumer and to its storage the
+resulting authorized information.  A Provider may also enforce its
+own authorization based upon its connection to a Controller; though,
+in the case where an application includes both the Provider and
+Controller roles, it can choose to implement all authorization on
+the Controller.  Similarly, a Consumer may enforce its own
+authorization of what data it can receive based on the Controller
+(or Provider) it is communicaticating with; in the case where an
+application includes both the Consumer and Controller roles, it can
+choose to implement all the authorization on the Controller.
 
 
 {: hangIndent='1'}
 Identity Management:
-:   Since Identity Management for authentication and
-authorization policies is best performed via a centralized component, the
-Controller
-also facilitates this function.
+: Since Identity Management for authentication
+and authorization policies is best performed via a centralized
+component, the Controller also facilitates this function.
 
+: The Controller needs to be able to identify the endpoints
+participating as SACM components and the roles that they play.
+Similar to how access control may be effected via Authentication,
+Authorization, and Accounting Systems (e.g.  AAA services), the
+same principle is defined; as AAA services depend on Identity
+Management services, the Controller will need a similar function
+and interface to Identity Management services.  Note that
+implementations of this function is abstractly centralized, but to
+address scalability and the need to manage different resources
+(e.g. users, processes and devices) a distributed system that is
+centrally coordinated may be used.
 
-The Controller needs to be able to identify the endpoints participating as
-SACM components
-and the roles that they play.  Similar to how access control may be effected
-via Authentication,
-Authorization, and Accounting Systems (e.g. AAA services), the same principle
-is defined; as
-AAA services depend on Identity Management services, the Controller will
-need a similar function
-and interface to Identity Management services.
 
 
 
 {: hangIndent='1'}
 Registration/Discovery:
-:   The discovery of what Providers are available, what
-information a Provider can share, and how it can be requested / communicated.
-A discovery
-mechanism is required to facilitate interaction with Providers that may have
-different
-Posture Assessment Information and potentially limited, or a rich set of,
-ways in which
-they can share the information.
+: A SACM ecosystem needs to provide the
+ability for devices to discover Providers, Consumers, Controllers
+and their respective capabilities.  For a Consumer to be able to
+obtain the information of interest must either configure itself to
+know what Providers to communicate with directly (and their known
+capabilities, such as the supported data model and information
+provided) or can dynamically discover the information that is
+available.  Similarly, Providers may need to either be configured to
+know who to publish the information to, or can dynamically discover
+its Consumers.
 
+: In the case where there is a Controller, the capabilities of the
+Controller must also be advertised so that Providers and Consumers
+may know how the data is being handled as well (e.g. if acting as a
+Broker or Repository).  The Controller also provides the function of
+registering the Providers and Consumers; the registration function
+enables the Controller to also affect the authorization afforded to
+the Provider or Consumer.
 
 
 ## Data Plane Functions {#data-plane-functions}
 
-Subscription
+There are three basic functions to facilitate data flow:
 
-Publication
+{: hangIndent='1'}
+Subscription:
+: A Consumer that wants to recieve information from a
+specific Provider or from the Controller advertising the
+availability of specific information (that may come from more than
+one Provider) will effectively subscribe to recieve the information
+spontaneously and continuously as new information as subscribed to
+becomes available.
 
-Query
+{: hangIndent='1'}
+Publication:
+: A Provider being registered through the Controller to
+provide specific information, may publish the information either
+directly to the Consumers or to the Controller that is acting as the
+broker or respository.
 
-
+{: hangIndent='1'}
+Query/Response:
+: A Consumer may contact the Provider directly and
+request the information through a query operation; and in response,
+the Provider would send the information directly to the Consumer.
 
 # Component Capabilities {#capabilities}
 
@@ -716,7 +778,7 @@ revise all this text based upon the agreed-upon architecture
  +------------------------+           +------------------------+
  | +----------------------+     A     | +------------------------+
  | |                      |===========| |                        |
- | |    Consumer (C)      |-----------| |      Provider (P)      |
+ | |    Consumer (Cs)     |-----------| |      Provider (Pr)     |
  +-|                      |     C     +-|                        |
     +---------------------+             +------------------------+
 
