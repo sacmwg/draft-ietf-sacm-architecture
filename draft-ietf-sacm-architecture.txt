@@ -300,21 +300,18 @@ Internet-Draft              SACM Architecture              November 2015
    handled to share or provide Posture Assessment information.
 
    One means by which a Provider shares information, is in response to a
-   direct request from a Consumer.  The response can be either a single
-   response, or a series of responses for a subscription request.  In
-   the event of a subscription, the Provider will occassionally need to
-   update the authorization of the Consumer.
+   direct request from a Consumer.
 
-   A Provider may also share information spontaneously without a
-   previous request from a Consumer.  In this case, the Provider obtain
-   a destination and authorization via a broker or a proxy component.
-
-   Both the spontaneous and subscription cases support use cases where
-   asynchronous publication of a change in a posture state requires that
-   the Provider provide the change to Consumers (such as Security
-   Information and Event Management (SIEM) system); similarly, SIEM
-   applications that are providing live information require such updates
-   to posture information to be provided asynchronously.
+   A Provider may also share information spontaneously.  Use cases such
+   as the change in a posture state require that a Provider be able to
+   provide such changes or updates especially to Consumers such as
+   Security Information and Event Management (SIEM) systems; similarly,
+   SIEM applications that are providing live information require any
+   such updates or changes to posture information to be provided
+   spontaneously.  Authorization for the enabling for these unsolicited
+   messages happens through the Controller at the time that both
+   Provider and Consumers request authorization for (spontaneous)
+   messages.
 
    The information provided, may be filtered or truncated to provide a
    subset of the requested information to honor the request.  This
@@ -330,6 +327,9 @@ Internet-Draft              SACM Architecture              November 2015
    and protocols.  However, it must support either one or more standard
    data models, or one or more standard protocols.  It may also choose
    to advertise its capabilities through a metadata abstraction within
+   the data model itself, or through the use of the registration
+   function of the Controller (see Section 3.1.4).
+
 
 
 
@@ -337,9 +337,6 @@ Cam-Winget, et al.         Expires May 7, 2016                  [Page 6]
 
 Internet-Draft              SACM Architecture              November 2015
 
-
-   the data model itself, or through the use of the registration
-   function of the Controller (see Section 3.1.4).
 
    The Provider must be authorized to provide the Posture Assessment
    Information for specific consumers.
@@ -385,6 +382,9 @@ Internet-Draft              SACM Architecture              November 2015
    the information it is requesting.  The Consumer may also be subject
    to limits or constraints on the numbers, types, sizes, and rate of
    requests.
+
+
+
 
 
 
