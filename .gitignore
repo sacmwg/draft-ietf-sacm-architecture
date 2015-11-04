@@ -2,9 +2,3 @@
 *~
 *#
 
-# Ignore kramdown temp files
-.refcache
-*.xml
-*.txt
-a.bat
-
