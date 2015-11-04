@@ -5,12 +5,12 @@
 SACM                                                  N. Cam-Winget, Ed.
 Internet-Draft                                             Cisco Systems
 Intended status: Informational                               L. Lorenzin
-Expires: April 19, 2016                                     Pulse Secure
+Expires: May 7, 2016                                        Pulse Secure
                                                              I. McDonald
                                                           High North Inc
                                                                A. Woland
                                                            Cisco Systems
-                                                        October 17, 2015
+                                                       November 04, 2015
 
 
     Secure Automation and Continuous Monitoring (SACM) Architecture
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 19, 2016.
+   This Internet-Draft will expire on May 7, 2016.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 1]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 1]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    publication of this document.  Please review these documents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 2]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 2]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    This document addresses general and architectural requirements
@@ -165,9 +165,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 3]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 3]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    exchanged, and/or stored.  This section provides an architectural
@@ -221,9 +221,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 4]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 4]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
                          +--------------------------------------+
@@ -277,9 +277,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 5]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 5]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    individual endpoints may be a target endpoint, a component, or both
@@ -300,18 +300,21 @@ Internet-Draft              SACM Architecture               October 2015
    handled to share or provide Posture Assessment information.
 
    One means by which a Provider shares information, is in response to a
-   direct request from a Consumer.
+   direct request from a Consumer.  The response can be either a single
+   response, or a series of responses for a subscription request.  In
+   the event of a subscription, the Provider will occassionally need to
+   update the authorization of the Consumer.
 
-   A Provider may also share information spontaneously.  Use cases such
-   as the change in a posture state require that a Provider be able to
-   provide such changes or updates especially to Consumers such as
-   Security Information and Event Management (SIEM) systems; similarly,
-   SIEM applications that are providing live information require any
-   such updates or changes to posture information to be provided
-   spontaneously.  Authorization for the enabling for these unsolicited
-   messages happens through the Controller at the time that both
-   Provider and Consumers request authorization for (spontaneous)
-   messages.
+   A Provider may also share information spontaneously without a
+   previous request from a Consumer.  In this case, the Provider obtain
+   a destination and authorization via a broker or a proxy component.
+
+   Both the spontaneous and subscription cases support use cases where
+   asynchronous publication of a change in a posture state requires that
+   the Provider provide the change to Consumers (such as Security
+   Information and Event Management (SIEM) system); similarly, SIEM
+   applications that are providing live information require such updates
+   to posture information to be provided asynchronously.
 
    The information provided, may be filtered or truncated to provide a
    subset of the requested information to honor the request.  This
@@ -327,16 +330,16 @@ Internet-Draft              SACM Architecture               October 2015
    and protocols.  However, it must support either one or more standard
    data models, or one or more standard protocols.  It may also choose
    to advertise its capabilities through a metadata abstraction within
+
+
+
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 6]
+
+Internet-Draft              SACM Architecture              November 2015
+
+
    the data model itself, or through the use of the registration
    function of the Controller (see Section 3.1.4).
-
-
-
-
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 6]
-
-Internet-Draft              SACM Architecture               October 2015
-
 
    The Provider must be authorized to provide the Posture Assessment
    Information for specific consumers.
@@ -386,12 +389,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-
-
-
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 7]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 7]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
 3.1.3.  Types of Providers and Controllers
@@ -445,9 +445,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 8]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 8]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    o  A management system that configures and installs software on the
@@ -501,9 +501,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                 [Page 9]
+Cam-Winget, et al.         Expires May 7, 2016                  [Page 9]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    Controller as a single component, implementations may implement this
@@ -557,9 +557,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 10]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 10]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    A single instantiation of a Controller may be a Broker, Proxy, or
@@ -613,9 +613,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 11]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 11]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    A:  interface "A" shown in Figure 1 handles the management and
@@ -669,9 +669,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 12]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 12]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    information.  Control plane functions include, but are not limited
@@ -725,9 +725,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 13]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 13]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    Identity Management:  Since Identity Management for authentication
@@ -781,9 +781,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 14]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 14]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
     directly to the Consumers or to the Controller that is acting as the
@@ -837,9 +837,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 15]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 15]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    Providers:  a Provider may be dedicated to perform either the
@@ -893,9 +893,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 16]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 16]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
                                    +-------------+
@@ -949,9 +949,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 17]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 17]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    TODO - add example of / more content around interactions with
@@ -1005,9 +1005,9 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 18]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 18]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    there may be other devices, modules or components in the path between
@@ -1034,15 +1034,15 @@ Internet-Draft              SACM Architecture               October 2015
               sacm-use-cases-10 (work in progress), July 2015.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, DOI 10.17487/
-              RFC2119, March 1997,
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
               <http://www.rfc-editor.org/info/rfc2119>.
 
 11.2.  Informative References
 
    [RFC3444]  Pras, A. and J. Schoenwaelder, "On the Difference between
-              Information Models and Data Models", RFC 3444, DOI
-              10.17487/RFC3444, January 2003,
+              Information Models and Data Models", RFC 3444,
+              DOI 10.17487/RFC3444, January 2003,
               <http://www.rfc-editor.org/info/rfc3444>.
 
    [RFC5209]  Sangster, P., Khosravi, H., Mani, M., Narayan, K., and J.
@@ -1061,9 +1061,9 @@ Authors' Addresses
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 19]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 19]
 
-Internet-Draft              SACM Architecture               October 2015
+Internet-Draft              SACM Architecture              November 2015
 
 
    Nancy Cam-Winget (editor)
@@ -1117,4 +1117,4 @@ Internet-Draft              SACM Architecture               October 2015
 
 
 
-Cam-Winget, et al.       Expires April 19, 2016                [Page 20]
+Cam-Winget, et al.         Expires May 7, 2016                 [Page 20]

@@ -481,12 +481,12 @@ ul.toc a:first-child {
 <link href="#rfc.authors" rel="Chapter"/>
 
 
-  <meta name="generator" content="xml2rfc version 2.5.0 - http://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.5.1 - http://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Cam-Winget, N., Ed., Lorenzin, L., McDonald, I., and A. Woland" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-ietf-sacm-architecture-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2015-10-17" />
+  <meta name="dct.issued" scheme="ISO8601" content="2015-11-04" />
   <meta name="dct.abstract" content="This document defines an architecture for standardization of interfaces, protocols, and information models related to security automation and continuous monitoring. It describes the basic architecture, components, and interfaces defined to enable the collection, acquisition, and verification of Posture and Posture Assessments." />
   <meta name="description" content="This document defines an architecture for standardization of interfaces, protocols, and information models related to security automation and continuous monitoring. It describes the basic architecture, components, and interfaces defined to enable the collection, acquisition, and verification of Posture and Posture Assessments." />
 
@@ -510,7 +510,7 @@ ul.toc a:first-child {
   <td class="right">L. Lorenzin</td>
 </tr>
 <tr>
-  <td class="left">Expires: April 19, 2016</td>
+  <td class="left">Expires: May 7, 2016</td>
   <td class="right">Pulse Secure</td>
 </tr>
 <tr>
@@ -531,7 +531,7 @@ ul.toc a:first-child {
 </tr>
 <tr>
   <td class="left"></td>
-  <td class="right">October 17, 2015</td>
+  <td class="right">November 04, 2015</td>
 </tr>
 
     	
@@ -551,7 +551,7 @@ ul.toc a:first-child {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 19, 2016.</p>
+<p>This Internet-Draft will expire on May 7, 2016.</p>
 <h1 id="rfc.copyrightnotice">
   <a href="#rfc.copyrightnotice">Copyright Notice</a>
 </h1>
@@ -665,11 +665,12 @@ ul.toc a:first-child {
 <h1 id="rfc.section.3.1.1"><a href="#rfc.section.3.1.1">3.1.1.</a> <a href="#provider" id="provider">Provider</a></h1>
 <p id="rfc.section.3.1.1.p.1">The Provider (Pr) is the component that contributes Posture Assessment Information and/or Guidance either spontaneously or in response to a request. A Provider can be a Posture Evaluator, Posture Collector, Data Store (see <a href="#provider-consumer-types">Section 3.1.3</a>), or an application that has aggregated Posture Assessment Information that can be shared.</p>
 <p id="rfc.section.3.1.1.p.2">The Provider implements the capabilities and functions that must be handled to share or provide Posture Assessment information.</p>
-<p id="rfc.section.3.1.1.p.3">One means by which a Provider shares information, is in response to a direct request from a Consumer.</p>
-<p id="rfc.section.3.1.1.p.4">A Provider may also share information spontaneously.  Use cases such as the change in a posture state require that a Provider be able to provide such changes or updates especially to Consumers such as Security Information and Event Management (SIEM) systems; similarly, SIEM applications that are providing live information require any such updates or changes to posture information to be provided spontaneously.  Authorization for the enabling for these unsolicited messages happens through the Controller at the time that both Provider and Consumers request authorization for (spontaneous) messages.</p>
-<p id="rfc.section.3.1.1.p.5">The information provided, may be filtered or truncated to provide a subset of the requested information to honor the request.  This truncation may be performed based on the Consumer&#8217;s request and/or the Provider&#8217;s ability to filter.  The latter case may be due to security considerations (e.g. authorization restrictions due to domain segregation, privacy, etc.).</p>
-<p id="rfc.section.3.1.1.p.6">The Provider may only be able to share the Posture Assessment Information using a specific data model and protocol. It may use a standard data model and/or protocol, a non-standard data model and/or protocol, or any combination of standard and non-standard data models and protocols.  However, it must support either one or more standard data models, or one or more standard protocols. It may also choose to advertise its capabilities through a metadata abstraction within the data model itself, or through the use of the registration function of the Controller (see <a href="#controller">Section 3.1.4</a>).</p>
-<p id="rfc.section.3.1.1.p.7">The Provider must be authorized to provide the Posture Assessment Information for specific consumers.</p>
+<p id="rfc.section.3.1.1.p.3">One means by which a Provider shares information, is in response to a direct request from a Consumer.  The response can be either a single response, or a series of responses for a subscription request.  In the event of a subscription, the Provider will occassionally need to update the authorization of the Consumer.</p>
+<p id="rfc.section.3.1.1.p.4">A Provider may also share information spontaneously without a previous request from a Consumer.  In this case, the Provider obtain a destination and authorization via a broker or a proxy component.</p>
+<p id="rfc.section.3.1.1.p.5">Both the spontaneous and subscription cases support use cases where asynchronous publication of a change in a posture state requires that the Provider provide the change to Consumers (such as Security Information and Event Management (SIEM) system); similarly, SIEM applications that are providing live information require such updates to posture information to be provided asynchronously.</p>
+<p id="rfc.section.3.1.1.p.6">The information provided, may be filtered or truncated to provide a subset of the requested information to honor the request.  This truncation may be performed based on the Consumer&#8217;s request and/or the Provider&#8217;s ability to filter.  The latter case may be due to security considerations (e.g. authorization restrictions due to domain segregation, privacy, etc.).</p>
+<p id="rfc.section.3.1.1.p.7">The Provider may only be able to share the Posture Assessment Information using a specific data model and protocol. It may use a standard data model and/or protocol, a non-standard data model and/or protocol, or any combination of standard and non-standard data models and protocols.  However, it must support either one or more standard data models, or one or more standard protocols. It may also choose to advertise its capabilities through a metadata abstraction within the data model itself, or through the use of the registration function of the Controller (see <a href="#controller">Section 3.1.4</a>).</p>
+<p id="rfc.section.3.1.1.p.8">The Provider must be authorized to provide the Posture Assessment Information for specific consumers.</p>
 <h1 id="rfc.section.3.1.2"><a href="#rfc.section.3.1.2">3.1.2.</a> <a href="#requestor" id="requestor">Consumer</a></h1>
 <p id="rfc.section.3.1.2.p.1">The Consumer (Cs) is the component that requests or accepts Posture Assessment Information and/or Guidance. A Consumer can be a Posture Evaluator, Report Generator, Data Store (see <a href="#data-plane-functions">Section 5.2</a>), or an application that consumes Posture Assessment Information in order to perform another function.</p>
 <p id="rfc.section.3.1.2.p.2">As described in Section 2.2 of the SACM Use Cases <a href="#I-D.ietf-sacm-use-cases">[I-D.ietf-sacm-use-cases]</a>, several usage scenarios are posed with different application types requesting posture assessment information. Whether it is a configuration verification system; a checklist verification system; or a system for detecting posture deviations, compliance or vulnerabilities, they all need to acquire information about Posture Assessment. The architectural component performing such requests is a Consumer.</p>
