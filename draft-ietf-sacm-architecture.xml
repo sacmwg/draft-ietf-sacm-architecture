@@ -270,7 +270,7 @@ The response can be either a single response, or a series of responses for a sub
 In the event of a subscription, the Provider will occassionally need to update the authorization of the Consumer.</t>
 
 <t>A Provider may also share information spontaneously without a previous request from a Consumer.
-In this case, the Provider obtain a destination and authorization via a broker or a proxy component.</t>
+In this case, the Provider obtains a destination and authorization via a broker or a proxy component.</t>
 
 <t>Both the spontaneous and subscription cases support use cases where asynchronous publication of
 a change in a posture state requires that the Provider 
